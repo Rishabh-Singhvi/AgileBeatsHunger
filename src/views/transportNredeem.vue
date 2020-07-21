@@ -224,7 +224,7 @@ export default {
                 product['id']=doc.id
                 this.allproduct.push(product)
                 
-                console.log(this.allproduct)
+                //console.log(this.allproduct)
             })
         })
     }

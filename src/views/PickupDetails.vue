@@ -123,7 +123,7 @@
                                                         label="Phone Number"
                                                         placeholder="Phone Number"
                                                         input-classes="form-control-alternative"
-                                                        v-model="userObj.phoneNO"
+                                                        v-model="userObj.phoneNo"
                                             />
                                         </div>
                                     </div>
@@ -239,15 +239,13 @@ const auth = firebase.auth();
     },
     methods:{
          mode(){
-           if(this.userObj.name!=''&&this.userObj.organization!=''&&
-           this.userObj.description!=''&&this.userObj.address!=''&&
-           this.userObj.timings.date!=''&&this.userObj.timings.time!=''&&
-           this.userObj.email!=''&&this.userObj.phoneNo!=''){
+           if(this.userObj.name!='' && this.userObj.organization!='' &&this.userObj.description!='' && this.userObj.address!='' &&this.userObj.timings.date!=''&&this.userObj.timings.time!=''&&this.userObj.email!=''&&this.userObj.phoneNo!='')
+           {
               this.modals.modal2=true
            }         
            else
            {
-               this.modals.modal1=true
+               this.modals.modal2=true
            }          
         },
         create(){

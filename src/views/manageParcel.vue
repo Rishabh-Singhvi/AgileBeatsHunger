@@ -77,7 +77,7 @@
           </td>
 
           <td class="text-right">
-            <base-button type="info">Initiate Pickup</base-button>
+            <base-button type="info" @click="modals.modal1=true">Initiate Pickup</base-button>
           </td>
 
         </template>
@@ -91,13 +91,40 @@
 
   </div>
 </base-header>
+ <modal :show.sync="modals.modal1"
+          gradient="white"
+          modal-classes="modal-danger modal-dialog-centered">
+          <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport">                            
+          <div class="py-20 col">
+              <h4 >{{allTransport[indextr].transport}}</h4>
+          </div>
+          <div class="col" v-if="!allTransport[indextr].selected" @click="selected(tr)">
+              <badge pill type="primary" >Select</badge>
+          </div>
+           <div class="col" v-if="allTransport[indextr].selected" @click="selected(tr)">
+              <badge pill type="danger" >Unselect</badge>
+          </div>
+          </div>
+
+          <template slot="footer">
+               <base-button type="success" @click="modals.modal1 = false">Initiate</base-button>
+              <base-button type="white" @click="modals.modal1 = false">Close</base-button>
+          </template>
+  </modal>
 </div>
 </template>
+
 <script>
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
   export default {
     name: 'projects-table',
     data() {
       return {
+        modals:{
+          modal1:false
+        },
+        allTransport:[],
         tableData: [
           {
             img: 'img/theme/bootstrap.jpg',
@@ -141,6 +168,26 @@
           }
         ]
       }
+    },
+    methods:{
+       selected(tr){
+         tr.selected=!tr.selected
+         console.log(tr)
+       }
+    },
+    beforeMount(){
+     db.collection("AllTransport").doc("transport").onSnapshot(allTransport=>{
+            if (this.allTransport.length !== 0) this.allTransport = [];
+            allTransport.data().allTransport.forEach((element,index)=>{
+                let blankTrans={
+                  id:index+1,
+                  transport:element,
+                  selected:false
+                };
+                this.allTransport.push(blankTrans)
+                console.log(this.allTransport)
+            })
+        })
     }
   }
 </script>
