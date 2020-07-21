@@ -10,7 +10,7 @@
                         </h1>
                         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
                           style="min-height: 300px; background-image: url(img/theme/mart.jpg);opacity:0.9; 
-                          background-size: cover; background-position: center top;margin-bottom:50px;margin-top:0px">
+                          background-size: cover; background-position: center top;margin-bottom:50px;margin-top:0px;border-radius:5px">
                                 
                     
                                 <div class="container-fluid d-flex align-items-center" style="min-height:325px;
@@ -29,21 +29,30 @@
         
         
         <div class="col-xl-12 order-xl-1" >
-             <br><br>
+             <br>
+             <div style="margin-left:1000px;padding-top:5px;padding-bottom:1px;padding-left:5px">
+                
+             </div>
+             <br>
             <div class="row" >
         
                   
                 <div class="col-xl-12 order-xl-1">
-                   
+                     
                     <card shadow type="secondary" >
+                         <div style="background-color:#43464b;color:white;margin-left:900px;padding-top:5px;padding-left:5px;margin-right:50px;border-radius:15px">
+                                                CURRENT BALANCE : 100 
+                                                <i class="fas fa-coins"></i>
+                         </div> 
+                         <br>
                         <div class="row">
                             <div class="col-xl-4 order-xl-1">
                             <card shadow type="secondary" >
-                              <img src=img/theme/q.jpg style="max-height:300px;max-width:300px">
+                              <img src=img/theme/q.jpg style="max-height:300px;max-width:300px;border-radius:15px">
                               <h2 style="margin-top:5px">TEA LEAVES-5kg</h2>
                                <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button block type="" style="background-color:#3e3e3e;color:white;margin-left:20px"  @click="mode">
+                                            <base-button btn-small block type="" style="background-color:#43464b;color:white;margin-left:20px"  @click="mode">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> BUY
                                             </base-button>                               
                                         </div>
@@ -55,11 +64,11 @@
 
                             <div class="col-xl-4 order-xl-1">
                            <card shadow type="secondary" >
-                              <img src=img/theme/t.jpg style="max-height:300px;max-width:300px">
+                              <img src=img/theme/t.jpg style="max-height:300px;max-width:300px;border-radius:15px">
                                <h2 style="margin-top:5px">BREAD-10 LOAVES</h2>
                                 <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button block type="" style="background-color:#3e3e3e;color:white;margin-left:20px"  @click="mode">
+                                            <base-button btn-small block type="" style="background-color:#43464b;color:white;margin-left:20px"  @click="mode">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> BUY
                                             </base-button>                               
                                         </div>
@@ -71,11 +80,11 @@
 
                             <div class="col-xl-4 order-xl-1">
                            <card shadow type="secondary" >
-                               <img src=img/theme/r.jpg style="max-height:300px;max-width:300px">
+                               <img src=img/theme/r.jpg style="max-height:300px;max-width:300px;border-radius:15px">
                                <h2 style="margin-top:5px">BROWN SUGAR-5 kgs</h2>
                                 <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button block type="" style="background-color:#3e3e3e;color:white;margin-left:20px"  @click="mode">
+                                            <base-button btn-small block type="" style="background-color:#43464b;color:white;margin-left:20px"  @click="mode">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> BUY
                                             </base-button>                               
                                         </div>
@@ -88,7 +97,7 @@
                     </card>
                     <br>
                         <div class="col-md-3">
-                        <base-button block type="" style="background-color:#3e3e3e;color:white" class=" mb-3" @click="mode">
+                        <base-button btn-small block type="" style="background-color:#43464b;color:white" class=" mb-3" @click="mode">
                             PLACE ORDER
                         </base-button>
                         </div>
