@@ -49,6 +49,21 @@ export default new Router({
           path: '/transportNredeem',
           name: 'Manage Transport and Bazzar',
           component: () => import(/* webpackChunkName: "demo" */ './views/transportNredeem.vue')
+        },
+        {
+          path: '/BeatHunger',
+          name: 'BeatHunger',
+          component: () => import(/* webpackChunkName: "demo" */ './views/BeatHunger.vue')
+        },
+        {
+          path: '/PickupDetails',
+          name: 'PickupDetails',
+          component: () => import(/* webpackChunkName: "demo" */ './views/PickupDetails.vue')
+        },
+        {
+          path: '/bazar',
+          name: 'bazar',
+          component: () => import(/* webpackChunkName: "demo" */ './views/bazar.vue')
         }
       ]
     },
