@@ -96,18 +96,18 @@
                     </div>
                 </div>
                  <modal :show.sync="modals.modal1"
-                            gradient="primary"
+                            gradient="white"
                             modal-classes="modal-danger modal-dialog-centered">
-                            <h6 slot="header" class="modal-title heading mt-1" id="modal-title-notification">Select</h6>
-                            <div class="py-3 text-center">
-                                <base-checkbox  class="mb-3" :key="indextr" v-for="(tr, indextr) in allTransport" @click="delTrans(allTransport[indextr])">
-                                <h6 class="dropdown-item">{{allTransport[indextr]}}</h6>
-                                </base-checkbox>
+                            <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport">                            
+                            <div class="py-20 col">
+                                <h4 >{{allTransport[indextr]}}</h4>
                             </div>
-                            
+                             <div class="col" @click="delTrans(indextr)">
+                                <badge pill type="danger" >Delete</badge>
+                            </div>
+                            </div>
 
                             <template slot="footer">
-                                <base-button type="danger" style="margin:10px" >Delete</base-button>
                                 <base-button type="white" @click="modals.modal1 = false">Close</base-button>
                             </template>
                     </modal>
@@ -118,7 +118,7 @@
                             <div class="py-20 col" >
                                 <h4 >{{allproduct[index].proName}}</h4>
                             </div>
-                            <div class="col" @click="delPro(allproduct[index].id)">
+                            <div class="col" @click="delPro(allproduct[index].id,index)">
                                 <badge pill type="danger" >Delete</badge>
                             </div>
                             </div>
@@ -164,9 +164,16 @@ export default {
             
     //     },
     methods:{
-        delPro(x){
+        delPro(x,index){
             console.log(x)
+            this.allproduct.splice(index,1)
             db.collection("AllProducts").doc(x).delete()
+        },
+        delTrans(index){
+             let transportref = db.collection("AllTransport").doc("transport");
+            transportref.update({
+            allTransport: firebase.firestore.FieldValue.arrayRemove(this.allTransport[index])
+          });
         },
         addTransport(){
           let transportref = db.collection("AllTransport").doc("transport");
@@ -211,10 +218,10 @@ export default {
         })
         db.collection("AllProducts").onSnapshot(snapshot=>{
             let product={}
+            if(this.allproduct.length!==0) this.allproduct=[]
             snapshot.forEach(doc=>{
                 product=doc.data()
                 product['id']=doc.id
-
                 this.allproduct.push(product)
                 
                 console.log(this.allproduct)
