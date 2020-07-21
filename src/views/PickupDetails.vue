@@ -99,30 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <!-- <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="City"
-                                                        placeholder="City"
-                                                        input-classes="form-control-alternative"
-                                                       
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="State"
-                                                        placeholder="State"
-                                                        input-classes="form-control-alternative"
-                                                        
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="Postal code"
-                                                        placeholder="Postal code"
-                                                        input-classes="form-control-alternative"
-                                                        
-                                            />
-                                        </div> -->
+                                       
                                     </div>
                                 </div>
                                 
@@ -160,32 +137,28 @@
                             Pick the Parcel
                         </base-button>
 
-                        <!-- <modal :show.sync="modals.modal2"
+                        <modal :show.sync="modals.modal2"
                             gradient="danger"
                             modal-classes="modal-danger modal-dialog-centered">
                             <h6 slot="header" class="modal-title heading mt-1" id="modal-title-notification">Preview</h6>
                             <div class="py-3 text-center">
                                 <i class="ni ni-circle-08 ni-3x"></i>
-                                <h4 class="heading mt-4">Your Details</h4>
-                                <p>Are you sure you want to create the event</p>
+                                <h4 class="heading mt-4">Details</h4>
+                                <p>Your Pickup details are :</p>
                             </div>
-                            <span class="mb-4">Title :</span><span>{{eventObj.title}} </span>
+                            <span class="mb-4">Name :</span><span>{{userObj.name}} </span>
                             <br>
-                            <span>Description :</span><span>{{eventObj.description}} </span>
+                            <span>Organization :</span><span>{{userObj.organization}} </span>
                             <br>
-                            <span>Date. :</span><span>{{eventObj.timings.date}}</span>
+                            <span>Date :</span><span>{{userObj.timings.date}}</span>
                             <br>
-                            <span>Start Time :</span><span>{{eventObj.timings.start}}</span>
+                            <span>Time :</span><span>{{userObj.timings.time}}</span>
                             <br>
-                            <span>End Time :</span><span>{{eventObj.timings.end}}</span>
+                            <span>Address :</span><span>{{userObj.address}}</span>
                             <br>
-                            <span>Event Type :</span><span>{{eventObj.type}}</span>
+                            <span>Email :</span><span>{{userObj.email}}</span>
                             <br>
-                            <span>Venue :</span><span>{{eventObj.address}},{{eventObj.city}},{{eventObj.state}},{{eventObj.postalCode}}</span>
-                            <br>
-                            <span>Email :</span><span>{{eventObj.email}}</span>
-                            <br>
-                            <span>Phone No. :</span><span>{{eventObj.phoneNo}}</span>
+                            <span>Phone No. :</span><span>{{userObj.phoneNo}}</span>
                             
 
                             <template slot="footer">
@@ -193,7 +166,7 @@
                                     :can-cancel="true" 
                                     :on-cancel="onCancel"
                                     :is-full-page="fullPage"></loading>
-                                <base-button type="white" @click="create">Create</base-button>
+                                <base-button type="white" @click="create">Pick the Parcel</base-button>
                                 <base-button type="link"
                                             text-color="white"
                                             class="ml-auto"
@@ -216,7 +189,7 @@
                             <template slot="footer">
                                 <base-button type="white" @click="modals.modal1 = false">Close</base-button>
                             </template>
-                        </modal> -->
+                        </modal>
                    </div>
                       
                 </div>
@@ -226,24 +199,26 @@
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script>
-// import Loading from 'vue-loading-overlay';
-//     // Import stylesheet
-// import 'vue-loading-overlay/dist/vue-loading.css';
+import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 import flatPicker from "vue-flatpickr-component";
 import "flatpickr/dist/flatpickr.css";
 import VueTimepicker from 'vue2-timepicker'
 
 import 'vue2-timepicker/dist/VueTimepicker.css'
-// import firebase from '@/firebase_init.js';
-// let db = firebase.firestore();
-// const auth = firebase.auth();
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
+const auth = firebase.auth();
   export default {    
     components: {flatPicker,
     VueTimepicker,
+    Loading
     },
     data(){
         return{
+            isLoading:false,
             userObj:{
                 'name':'',
                 'organization':'',
@@ -255,29 +230,39 @@ import 'vue2-timepicker/dist/VueTimepicker.css'
                 'address':'',
                 'email':'',
                 'phoneNo':''
+            },
+            modals:{
+                modal2:false,
+                modal1:false
             }
         }
+    },
+    methods:{
+         mode(){
+           if(this.userObj.name!=''&&this.userObj.organization!=''&&
+           this.userObj.description!=''&&this.userObj.address!=''&&
+           this.userObj.timings.date!=''&&this.userObj.timings.time!=''&&
+           this.userObj.email!=''&&this.userObj.phoneNo!=''){
+              this.modals.modal2=true
+           }         
+           else
+           {
+               this.modals.modal1=true
+           }          
+        },
+        create(){
+            this.isLoading = true;
+            db.collection('AllUsers').add(this.userObj);
+            this.isLoading = false;
+        }
+       
     }   
   };
   
 </script>
 <style>
 
-/* .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
 
-
-
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  opacity: 0;
-} */
 #vue-timepicker{
   width: 100%;
   padding: 6px 6px;
