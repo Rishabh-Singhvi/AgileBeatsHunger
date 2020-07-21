@@ -252,7 +252,8 @@ const auth = firebase.auth();
                 'description':'',
                 'address':'',
                 'email':'',
-                'phoneNo':''
+                'phoneNo':'',
+                'status':'Pending'
             },
             modals:{
                 modal2:false,
@@ -268,13 +269,25 @@ const auth = firebase.auth();
            }         
            else
            {
-               this.modals.modal2=true
+               this.modals.modal1=true
            }          
         },
         create(){
-            this.isLoading = true;
-            db.collection('AllUsers').add(this.userObj);
-            this.isLoading = false;
+            let uid=localStorage.getItem('uid')
+            console.log(uid)
+            db.doc('AllUsers/'+uid).set(this.userObj)
+            db.doc('Coins/'+uid).get().then(snap=>{
+                console.log(snap.data)
+                if(snap.data()){
+                    let prevCoin=snap.data().coins
+                    let newCoin=prevCoin+100
+                    db.doc('Coins/'+uid).set({coins:newCoin})
+                }
+                else{
+                   db.doc('Coins/'+uid).set({coins:100}) 
+                }
+            })
+            
         }
        
     }   

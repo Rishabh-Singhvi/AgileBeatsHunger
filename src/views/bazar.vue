@@ -41,7 +41,7 @@
                      
                     <card shadow type="secondary" >
                          <div style="background-color:#43464b;color:white;margin-left:900px;padding-top:5px;padding-left:5px;margin-right:50px;border-radius:15px">
-                                                CURRENT BALANCE : 100 
+                                                CURRENT BALANCE : {{coins}}
                                                 <i class="fas fa-coins"></i>
                          </div> 
                          <br>
@@ -121,8 +121,9 @@ import "flatpickr/dist/flatpickr.css";
 import VueTimepicker from 'vue2-timepicker'
 
 import 'vue2-timepicker/dist/VueTimepicker.css'
-// import firebase from '@/firebase_init.js';
-// let db = firebase.firestore();
+ import firebase from '@/firebase_init.js';
+
+let db = firebase.firestore();
 // const auth = firebase.auth();
   export default {    
     components: {flatPicker,
@@ -130,9 +131,17 @@ import 'vue2-timepicker/dist/VueTimepicker.css'
     },
     data(){
         return{
-         
+           coins:0
         }
-    }   
+    } ,
+    beforeMount(){
+        let uid=localStorage.getItem('uid')
+         db.doc('Coins/'+uid).get().then(snap=>{
+             if(snap.data()){
+                 this.coins=snap.data().coins
+             }
+         })
+    }  
   };
   
 </script>
