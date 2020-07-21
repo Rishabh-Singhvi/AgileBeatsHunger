@@ -138,7 +138,7 @@
                         </base-button>
 
                         <modal :show.sync="modals.modal2"
-                            gradient="danger"
+                            gradient="primary"
                             modal-classes="modal-danger modal-dialog-centered">
                             <h6 slot="header" class="modal-title heading mt-1" id="modal-title-notification">Preview</h6>
                             <div class="py-3 text-center">
@@ -146,20 +146,43 @@
                                 <h4 class="heading mt-4">Details</h4>
                                 <p>Your Pickup details are :</p>
                             </div>
-                            <span class="mb-4">Name :</span><span>{{userObj.name}} </span>
-                            <br>
-                            <span>Organization :</span><span>{{userObj.organization}} </span>
-                            <br>
-                            <span>Date :</span><span>{{userObj.timings.date}}</span>
-                            <br>
-                            <span>Time :</span><span>{{userObj.timings.time}}</span>
-                            <br>
-                            <span>Address :</span><span>{{userObj.address}}</span>
-                            <br>
-                            <span>Email :</span><span>{{userObj.email}}</span>
-                            <br>
-                            <span>Phone No. :</span><span>{{userObj.phoneNo}}</span>
-                            
+                            <card type="secondary" style="color:black">
+                            <table >
+                                <tr>
+                                    <th>Name </th>
+                                    <td>{{userObj.name}}</td>
+                                </tr>
+                                 <tr>                                    
+                                    <th>Organization </th>   
+                                    <td>{{userObj.organization}}</td>                                                                    
+                                </tr>
+                                <tr>                                    
+                                    <th>Description </th>   
+                                    <td>{{userObj.description}}</td>                                                                    
+                                </tr>
+                                 <tr>                                    
+                                    <th>Date </th>   
+                                    <td>{{userObj.timings.date}}</td>                                                                    
+                                </tr>
+                                <tr>                                    
+                                    <th>Time </th>   
+                                    <td>{{userObj.timings.time}}</td>                                                                    
+                                </tr>
+                                <tr>                                    
+                                    <th>Address </th>   
+                                    <td>{{userObj.address}}</td>                                                                    
+                                </tr>
+                                <tr>                                    
+                                    <th>Email </th>   
+                                    <td>{{userObj.email}}</td>                                                                    
+                                </tr>
+                                <tr>                                    
+                                    <th>PhoneNo </th>   
+                                    <td>{{userObj.phoneNo}}</td>                                                                    
+                                </tr>
+                                
+                            </table>
+                            </card>
 
                             <template slot="footer">
                                 <loading :active.sync="isLoading" 

@@ -64,6 +64,11 @@ export default new Router({
           path: '/bazar',
           name: 'bazar',
           component: () => import(/* webpackChunkName: "demo" */ './views/bazar.vue')
+        },
+        {
+          path: '/userDetails',
+          name: 'userDetails',
+          component: () => import(/* webpackChunkName: "demo" */ './views/userDetails.vue')
         }
       ]
     },

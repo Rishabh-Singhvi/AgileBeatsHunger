@@ -7,9 +7,9 @@
                 <span class="navbar-toggler-icon"></span>
             </navbar-toggle-button>
             <router-link class="navbar-brand" to="/">
-                <img :src="logo" class="navbar-brand-img" alt="...">
+                <img :src="logo" class="navbar-brand-img" alt="..." style="max-height:100px">
             </router-link>
-
+            <h2 style="margin-left:20px">Beat the Hunger</h2>
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">
@@ -27,7 +27,7 @@
                         <a slot="title" class="nav-link" href="#" role="button">
                             <div class="media align-items-center">
                               <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="img/theme/team-1-800x800.jpg">
+                                <img alt="Image placeholder" src="img/theme/foodicon.jpg">
                               </span>
                             </div>
                         </a>
@@ -119,7 +119,7 @@
     props: {
       logo: {
         type: String,
-        default: 'img/brand/green.png',
+        default: 'img/theme/foodicon.png',
         description: 'Sidebar app logo'
       },
       autoClose: {

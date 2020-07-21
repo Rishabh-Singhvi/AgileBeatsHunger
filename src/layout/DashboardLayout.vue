@@ -2,8 +2,8 @@
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <side-bar
       :background-color="sidebarBackground"
-      short-title="Argon"
-      title="Argon"
+      short-title="Beat the Hunger"
+      title="Beat the Hunger"
     >
       <template slot="links">
         <sidebar-item
