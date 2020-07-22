@@ -5,9 +5,9 @@
         <div class="col-xl-12 order-xl-1" >
                    
                     <card shadow type="secondary">
-                        <h1 style="text-align:center;background-color:#03254c;color:white;">
+                        <h2 style="text-align:center;background-color:#03254c;color:white;">
                            REDEEM YOUR COINS   
-                        </h1>
+                        </h2>
                         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
                           style="min-height: 300px; background-image: url(img/theme/mart.jpg);opacity:0.9; 
                           background-size: cover; background-position: center top;margin-bottom:50px;margin-top:0px;border-radius:5px">

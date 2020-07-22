@@ -1,13 +1,14 @@
 <template>
     <div  >
-
-        <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                     style="min-height: 400px; background-image: url(img/theme/food5.jpg); 
-                     background-size: cover; background-position: center top;">
-            <h1 style="text-align:center">
+        <br><br><br>
+        <h2 style="text-align:center;background-color:#03254c;color:white">
                     BOOK YOUR PICKUP    
-            </h1>
-            <div class="container-fluid d-flex align-items-center" style="min-height: 550px; background-image: url(img/theme/.jpg);
+        </h2>
+        <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+                     style="min-height: 400px; background-image: url(img/theme/44.jpg); 
+                     background-size: cover; background-position: center top;">
+            
+            <div class="container-fluid d-flex align-items-center" style="min-height: 450px; background-image: url(img/theme/.jpg);
                      background-size: cover; background-position: center top;opacity:0.9">
                 <div class="row" >
                     <div class="col-lg-7 col-md-10"  >

@@ -22,6 +22,9 @@
                         
                          <div class="col-lg-14 text-center">
                                             <!-- <div class="row col-lg-6"> -->
+                                            <span class="avatar avatar-lg rounded-circle">
+                                             <img alt="Image placeholder" src="img/theme/foodicon.png" >
+                                            </span>
                                             <h5>Register As</h5>
                                             <base-dropdown >
                                             <base-button slot="title" type="default" class="dropdown-toggle" v-if="type">
