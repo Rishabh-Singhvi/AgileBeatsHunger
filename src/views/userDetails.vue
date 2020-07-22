@@ -2,7 +2,7 @@
     <div >
         <br><br>
         <card type="secondary">
-        <h1 style="margin-top:15px;padding-left:10px;color:white;background-color:#03254c;text-align:center">PROFILE AND ANALYTICS</h1>
+        <h2 style="margin-top:15px;padding-left:10px;color:white;background-color:#03254c;text-align:center">USER DETAILS</h2>
         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex amargin-top:15px;margin-left:30px"
                      style="min-height: 500px; background-image: url(img/theme/sd.jpg; background-size: cover; backgroundmargin-top:15px;margin-left:30px top;">
           
@@ -98,18 +98,24 @@
                     <br>
                         
                        
-                            <div class="col-xl-12 order-xl-1">
-                              
-                              
-                              <div class="row"  style="margin-left:40px">
-                             <img src=img/theme/foodicon.png style="max-height:75px;max-width:75px;margin-left:60px">                             
+                            
+                              <div class="row">
+                              <div class="col-xl-6 order-xl-1">
+                                  <div class="row"  style="margin-left:40px">
+                                        <img src=img/theme/foodicon.png style="max-height:75px;max-width:75px;margin-left:60px">                             
+                                  </div>
+                                  <h2 style="margin-top:15px;margin-left:80px">DESCRIPTION</h2>
                               </div>
-                              <h2 style="margin-top:15px;margin-left:80px">DESCRIPTION</h2>
-                            </div>
-                
-                      
-                </div>
-                
+
+                               <div class="col-xl-6 order-xl-1">
+                                  <div class="row"  style="margin-left:40px">
+                                        <img src=img/theme/del.png style="max-height:75px;max-width:75px;margin-left:60px">                             
+                                  </div>
+                                  <h2 style="margin-top:15px;margin-left:60px">DELIEVERY STATUS</h2>
+                              </div>                         
+                              </div>            
+                                    
+                       </div>
                     </div>
                 </div>
              </div>
@@ -124,7 +130,26 @@
 </script>
              
                            
+<style>
+img:hover {
+  animation: shake 2s;
+  animation-iteration-count: infinite;
+}
 
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+</style>
 
 
 
