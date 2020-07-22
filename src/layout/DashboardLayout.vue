@@ -8,18 +8,18 @@
       <template slot="links">
         <sidebar-item
           :link="{
-            name: 'Dashboard',
-            icon: 'ni ni-tv-2 text-primary',
-            path: '/dashboard'
+            name: 'Pickup Details',
+            icon: 'ni ni-basket text-danger',
+            path: '/PickupDetails'
           }"
         />
 
-        <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
-        <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/>
-        <sidebar-item :link="{name: 'User Profile', icon: 'ni ni-single-02 text-yellow', path: '/profile'}"/>
-        <sidebar-item :link="{name: 'Tables', icon: 'ni ni-bullet-list-67 text-red', path: '/tables'}"/>
-        <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
-        <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/>
+        <sidebar-item :link="{name: 'Bazar', icon: 'ni ni-cart text-blue', path: '/bazar'}"/>
+        <sidebar-item :link="{name: 'Transport & Redeem', icon: 'ni ni-delivery-fast  text-success', path: '/transportNredeem'}"/>
+        <sidebar-item :link="{name: 'User Details', icon: 'ni ni-single-02 text-yellow', path: '/userDetails'}"/>
+        <sidebar-item :link="{name: 'Manage Parcel', icon: 'ni ni-archive-2 text-indigo', path: '/manageParcel'}"/>
+        <!-- <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
+        <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/> -->
 
       </template>
     </side-bar>

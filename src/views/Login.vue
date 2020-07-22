@@ -17,7 +17,13 @@
                             <small>Or sign in with credentials</small>
                         </div> -->
                         <form role="form">
-                          
+                            <div class="text-center">
+                             <div class="avatar avatar-lg rounded-circle">
+                                 <img alt="Image placeholder" src="img/theme/foodicon.png" style="max-height:75px;max-width:75px">
+                              </div>
+                            </div>
+                             <h3 style="text-align:center">LOGIN</h3>
+                             <br>
                             <base-input class="input-group-alternative mb-3"
                                         placeholder="Email"
                                         addon-left-icon="ni ni-email-83"

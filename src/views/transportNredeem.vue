@@ -1,22 +1,41 @@
 <template>
-    <div>
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
+    <div >
+         <br><br><br>
+        
+            <div class="row align-items-center"> 
+            <div class="col-12">
+                <h3 style="background-color:#03254c;color:white;text-align:center;padding-top:5px
+                ;padding-bottom:5px">TRANSPORT AND REDEEM</h3>
+            </div>
+           </div>
+        <base-header  class="pb-6 pb-8 pt-5 pt-md-8"  style="min-height: 400px;min-width: 400px; background-image: url(img/theme/trans1.jpg);
+         background-size: cover; background-position: center top;">
+          <div class="container-fluid d-flex align-items-center" style="min-height:300px;
+                                        background-size: cover; background-position: center top;opacity:0.9">
+                                    <div class="row" >
+                                        
+                                        <div class="col-lg-7 col-md-10"  >
+                                            <!-- <h4 class="display-4 text-white">Create your Event</h4>
+                                            <p class="text-white mt-0 mb-5">Organise your event . You can create your event here</p> -->
+                                        </div>
+                                    </div>
+                                </div>
         </base-header>
-        <div class="container-fluid mt--7">
+        <div class="container-fluid mt--7" >
             <card shadow type="secondary">
                  <div slot="header" class="bg-white border-0">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h3 class="mb-0">Add transport Provider</h3>
-                                </div>
+                           <div class="row align-items-center"> 
+                            <div class="col-12">
+                                <h3 >Add transport Provider</h3>
                             </div>
+                              </div>
                         </div>
              <div class="row">
                 <div class="col-md-10">
                    <base-input alternative placeholder="Add Transport Provider" v-model="transport"></base-input>
                 </div>
                 <div class="col-md-2">
-                   <base-button type="info" @click="addTransport"><i class="ni ni-fat-add"></i></base-button>
+                   <base-button type="" @click="addTransport" style="background-color:#3e3e3e;color:white"><i class="ni ni-fat-add "></i></base-button>
                 </div>
              </div>
             </card>
@@ -32,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-2">
                <input type="file" id="file" @change="previewImage" accept="image/*">
-                <label for="file" v-if="!uploading" >Upload Image</label>
+                <label for="file" v-if="!uploading" style="background-color:#3e3e3e"  >Upload Image</label>
                 <base-button size="sm" v-if="uploading" disabled type="info" class="mr-4">Uploading</base-button>
                 <base-button size="sm" v-if="proDetails.picture" disabled type="danger" class="mr-4">Uploaded</base-button>
                 </div>
@@ -71,7 +90,7 @@
                     />
                 </div>
             </div>
-             <base-button type="info" @click="addProduct()" >Add</base-button>
+             <base-button type="" @click="addProduct()" style="background-color:#3e3e3e;color:white" btn-small>Add</base-button>
             </card>
             <br>
 
@@ -85,12 +104,14 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                            <base-button slot="title" type="primary" @click="modals.modal1=true">
+                            <base-button slot="title" type="" @click="modals.modal1=true"
+                             style="background-color:#3e3e3e;color:white">
                             Select Transport To Delete
                             </base-button>
                     </div>
                     <div class="col">
-                            <base-button slot="title" type="primary" @click="modals.modal2=true">
+                            <base-button slot="title" type="" @click="modals.modal2=true" btn-small 
+                            style="background-color:#3e3e3e;color:white">
                             Select Product To Delete
                             </base-button>
                     </div>
@@ -98,7 +119,7 @@
                  <modal :show.sync="modals.modal1"
                             gradient="white"
                             modal-classes="modal-danger modal-dialog-centered">
-                            <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport">                            
+                            <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport" btn-small>                            
                             <div class="py-20 col">
                                 <h4 >{{allTransport[indextr]}}</h4>
                             </div>
