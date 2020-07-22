@@ -45,11 +45,11 @@
                                                 <i class="fas fa-coins"></i>
                          </div> 
                          <br>
-                        <div class="row">
+                        <div class="row" v-for="(pro,index) in allProduct" :key="index">
                             <div class="col-xl-4 order-xl-1">
                             <card shadow type="secondary" >
-                              <img src=img/theme/q.jpg style="max-height:300px;max-width:300px;border-radius:15px">
-                              <h2 style="margin-top:5px">TEA LEAVES-5kg</h2>
+                              <img :src="allProduct[index].picture" style="max-height:300px;max-width:300px;border-radius:15px">
+                              <h2 style="margin-top:5px">{{allProduct[index].proName}}</h2>
                                <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
                                             <base-button btn-small block type="" style="background-color:#43464b;color:white;margin-left:20px"  @click="mode">
@@ -57,7 +57,7 @@
                                             </base-button>                               
                                         </div>
                                         <i class="fas fa-coins fa-2x"  style="margin-left:100px;margin-top:20px"></i>
-                                        <h2 style="margin-left:15px;margin-top:20px">100</h2>
+                                        <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].coins}}</h2>
                                 </div>
                            </card>
                             </div>
@@ -131,7 +131,8 @@ let db = firebase.firestore();
     },
     data(){
         return{
-           coins:0
+           coins:0,
+           allProduct:[]
         }
     } ,
     beforeMount(){
@@ -140,6 +141,12 @@ let db = firebase.firestore();
              if(snap.data()){
                  this.coins=snap.data().coins
              }
+         })
+         db.collection("AllProducts").onSnapshot(response=>{
+             response.forEach(doc=>{
+                   this.allProduct.push(doc.data())
+                   console.log(this.allProduct)
+             })
          })
     }  
   };

@@ -253,7 +253,8 @@ const auth = firebase.auth();
                 'address':'',
                 'email':'',
                 'phoneNo':'',
-                'status':'Pending'
+                'status':'Pending',
+                'register':''
             },
             modals:{
                 modal2:false,
@@ -275,6 +276,8 @@ const auth = firebase.auth();
         create(){
             let uid=localStorage.getItem('uid')
             console.log(uid)
+            let regID = '_' + Math.random().toString(36).substr(2, 9);
+            this.userObj.register=regID
             db.doc('AllUsers/'+uid).set(this.userObj)
             db.doc('Coins/'+uid).get().then(snap=>{
                 console.log(snap.data)
