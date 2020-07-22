@@ -281,7 +281,7 @@ const auth = firebase.auth();
             this.userObj.register=regID
             db.doc('AllUsers/'+uid).set(this.userObj)
             db.doc('Coins/'+uid).get().then(snap=>{
-                console.log(snap.data)
+                console.log(snap.data())
                 if(snap.data()){
                     let prevCoin=snap.data().coins
                     let newCoin=prevCoin+100

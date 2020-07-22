@@ -62,7 +62,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/bazar.vue')
         },
         {
-          path: '/userDetails',
+          path: '/userDetails/:id',
           name: 'userDetails',
           component: () => import(/* webpackChunkName: "demo" */ './views/userDetails.vue')
         }

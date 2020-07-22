@@ -47,22 +47,25 @@
                         <div class="row" style="margin-left:40px">
                             <div class="col-xl-4 order-xl-1">
                               
-                              <img src=img/theme/user.png style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:60px">NAME</h2>                               
+                              <img src=img/theme/user.png style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:60px">NAME</h5>
+                              <h4 style="margin-top:15px;margin-left:60px">{{userObj.name}}</h4>                             
                            
                             </div>
 
                             <div class="col-xl-4 order-xl-1">
                            
-                              <img src=img/theme/hotel.png style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:30px">ORGANISATION</h2>
+                              <img src=img/theme/hotel.png style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:40px">ORGANISATION</h5>
+                              <h4 style="margin-top:15px;margin-left:40px">{{userObj.organization}}</h4>  
                            
                             </div>
 
                             <div class="col-xl-4 order-xl-1">
                            
-                               <img src=img/theme/location.png style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:50px">ADDRESS</h2>
+                               <img src=img/theme/location.png style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:50px">ADDRESS</h5>
+                              <h4 style="margin-top:15px;margin-left:50px">{{userObj.address}}</h4>  
                            
                             </div>
                         </div>
@@ -73,23 +76,26 @@
                         <div class="row" style="margin-top:50px;margin-left:40px">
                             <div class="col-xl-4 order-xl-1">
                             
-                              <img src=img/theme/datetime.jfif style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:40px">DATE-TIME</h2>
+                              <img src=img/theme/datetime.jfif style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:40px">DATE-TIME</h5>
+                              <h4 style="margin-top:15px;margin-left:40px">{{userObj.timings.date}}</h4>  <h4 style="margin-top:15px;margin-left:40px">{{userObj.timings.time}}</h4>  
                            
                             </div>
 
 
                             <div class="col-xl-4 order-xl-1">
                     
-                              <img src=img/theme/email.png style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:60px">EMAIL</h2>
+                              <img src=img/theme/email.png style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:60px">EMAIL</h5>
+                              <h4 style="margin-top:15px;margin-left:60px">{{userObj.email}}</h4>  
                            
                             </div>
 
                              <div class="col-xl-4 order-xl-1">
                     
-                              <img src=img/theme/phone.png style="max-height:60px;max-width:60px;margin-left:60px">
-                              <h2 style="margin-top:15px;margin-left:50px">CONTACT</h2>
+                              <img src=img/theme/phone.png style="max-height:40px;max-width:40px;margin-left:60px">
+                              <h5 style="margin-top:15px;margin-left:50px">CONTACT</h5>
+                              <h4 style="margin-top:15px;margin-left:50px">{{userObj.phoneNo}}</h4>  
                            
                             </div>
                         </div>
@@ -102,16 +108,20 @@
                               <div class="row">
                               <div class="col-xl-6 order-xl-1">
                                   <div class="row"  style="margin-left:40px">
-                                        <img src=img/theme/foodicon.png style="max-height:75px;max-width:75px;margin-left:60px">                             
+                                        <img src=img/theme/foodicon.png style="max-height:40px;max-width:40px;margin-left:60px">                             
                                   </div>
-                                  <h2 style="margin-top:15px;margin-left:80px">DESCRIPTION</h2>
+                                  <h5 style="margin-top:15px;margin-left:80px">DESCRIPTION</h5>
+                                  <h4 style="margin-top:15px;margin-left:80px">{{userObj.description}}</h4>  
                               </div>
 
                                <div class="col-xl-6 order-xl-1">
                                   <div class="row"  style="margin-left:40px">
-                                        <img src=img/theme/del.png style="max-height:75px;max-width:75px;margin-left:60px">                             
+                                        <img src=img/theme/del.png style="max-height:40px;max-width:40px;margin-left:60px">                             
                                   </div>
-                                  <h2 style="margin-top:15px;margin-left:60px">DELIEVERY STATUS</h2>
+                                  <h5 style="margin-top:15px;margin-left:60px">DELIEVERY STATUS</h5>
+                                 <badge pill type="danger" style="margin-top:15px;margin-left:60px" v-if='userObj.status="Pending"'>Pending</badge>
+                                  <badge pill type="primary" style="margin-top:15px;margin-left:60px" v-if='userObj.status=="Initiated"'>Initiated</badge>
+                                  <badge pill type="success" style="margin-top:15px;margin-left:60px" v-if='userObj.status=="Delivered"'>Delivered</badge>  
                               </div>                         
                               </div>            
                                     
@@ -126,7 +136,26 @@
     
 </template>
 <script>
-
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
+export default {
+  props:{
+    id:String
+  },
+  data(){
+    return{
+       userObj:{}
+    }
+  },
+  beforeMount(){
+    let id=this.$route.params.id
+    console.log(id)
+    db.doc('AllUsers/'+id).get().then(response=>{
+      this.userObj=response.data()
+      console.log(this.userObj)
+    })
+  }
+}
 </script>
              
                            
