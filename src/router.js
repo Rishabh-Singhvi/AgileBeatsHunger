@@ -36,11 +36,7 @@ export default new Router({
           name: 'tables',
           component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
         },
-        {
-          path: '/manageParcel',
-          name: 'Manage Parcel',
-          component: () => import(/* webpackChunkName: "demo" */ './views/manageParcel.vue')
-        },
+        
         {
           path: '/transportNredeem',
           name: 'Manage Transport and Bazzar',
@@ -65,6 +61,11 @@ export default new Router({
           path: '/userDetails/:id',
           name: 'userDetails',
           component: () => import(/* webpackChunkName: "demo" */ './views/userDetails.vue')
+        },
+        {
+          path: '/mp',
+          name: 'userDetails',
+          component: () => import(/* webpackChunkName: "demo" */ './views/mp.vue')
         }
       ]
     },
