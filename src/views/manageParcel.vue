@@ -49,6 +49,26 @@
 
           <td class="text-right">
             <base-button type="info" @click="modals.modal1=true">Initiate Pickup</base-button>
+                  <modal :show.sync="modals.modal1"
+                gradient="white"
+                modal-classes="modal-danger modal-dialog-centered">
+                <div class="row" :key="indextr" v-for="(tr, indextr) in row.name.trans">                            
+                <div class="py-20 col">
+                    <h4 >{{tr.transport}}</h4>
+                </div>
+                <div class="col" v-if="!tr.selected" @click="selected(tr)">
+                    <badge pill type="primary" >Select</badge>
+                </div>
+                <div class="col" v-if="tr.selected" @click="selected(tr)">
+                    <badge pill type="danger" >Unselect</badge>
+                </div>
+                </div>
+
+                <template slot="footer">
+                    <base-button type="success" @click="modals.modal1 = false">Initiate</base-button>
+                    <base-button type="white" @click="modals.modal1 = false">Close</base-button>
+                </template>
+        </modal>
           </td>
 
         </template>
@@ -62,26 +82,7 @@
 
   </div>
 </base-header>
- <modal :show.sync="modals.modal1"
-          gradient="white"
-          modal-classes="modal-danger modal-dialog-centered">
-          <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport">                            
-          <div class="py-20 col">
-              <h4 >{{allTransport[indextr].transport}}</h4>
-          </div>
-          <div class="col" v-if="!allTransport[indextr].selected" @click="selected(tr)">
-              <badge pill type="primary" >Select</badge>
-          </div>
-           <div class="col" v-if="allTransport[indextr].selected" @click="selected(tr)">
-              <badge pill type="danger" >Unselect</badge>
-          </div>
-          </div>
 
-          <template slot="footer">
-               <base-button type="success" @click="modals.modal1 = false">Initiate</base-button>
-              <base-button type="white" @click="modals.modal1 = false">Close</base-button>
-          </template>
-  </modal>
 </div>
 </template>
 
@@ -124,8 +125,13 @@ let db = firebase.firestore();
          db.collection("AllUsers").doc(doc.id).update({
             id:doc.id
           })
+          let trans={...this.allTransport}
+          const nObj={...doc.data(),name:{trans:trans}}
+          // doc.data().push({trans:trans})
           console.log(doc.data())
-          this.tableData.push(doc.data())
+          this.tableData.push(nObj)
+          // this.tableData.push(trans)
+          console.log(nObj)
         })
       })
     }
