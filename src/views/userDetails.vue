@@ -46,26 +46,30 @@
                     
                         <div class="row" style="margin-left:40px">
                             <div class="col-xl-4 order-xl-1">
-                              
-                              <img src=img/theme/user.png style="max-height:40px;max-width:40px;margin-left:60px">
-                              <h5 style="margin-top:15px;margin-left:45px">VOLUNTEER</h5>
-                              <h4 style="margin-top:15px;margin-left:50px">{{userObj.name}}</h4>                             
-                           
+                               <div class="col justify-content-center">
+                              <img src=img/theme/user.png style="max-height:50px;max-width:50px;margin-left:30px">
+                              <div class="col justifu-align-center">
+                              <h5 style="margin-top:15px;">VOLUNTEER<span> </span></h5>
+                              <h5 style="margin-top:14px;text-transform: uppercase;">{{userObj.name}}</h5>    
+                              </div>                         
+                               </div>
                             </div>
 
                             <div class="col-xl-4 order-xl-1">
-                           
-                              <img src=img/theme/hotel.png style="max-height:40px;max-width:40px;margin-left:60px">
-                              <h5 style="margin-top:15px;margin-left:40px">ORGANISATION</h5>
-                              <h4 style="margin-top:15px;margin-left:0px">{{userObj.organization}}</h4>  
-                           
+                              <div class="col justify-content-center">
+                              <img src=img/theme/hotel.png style="max-height:50px;max-width:50px;margin-left:30px">
+                              <div class="col">
+                              <h5 style="margin-top:15px;">ORGANISATION</h5>
+                              <h5 style="margin-top:14px;text-transform: uppercase;">{{userObj.organization}}</h5>  
+                              </div>
+                              </div>
                             </div>
 
                             <div class="col-xl-4 order-xl-1">
                            
                                <img src=img/theme/location.png style="max-height:40px;max-width:40px;margin-left:60px">
                               <h5 style="margin-top:15px;margin-left:50px">ADDRESS</h5>
-                              <h4 style="margin-top:15px;margin-left:45px">{{userObj.address}}</h4>  
+                              <h5 style="margin-top:15px;margin-left:45px;text-transform: uppercase;">{{userObj.address}}</h5>  
                            
                             </div>
                         </div>
@@ -78,7 +82,7 @@
                             
                               <img src=img/theme/datetime.jfif style="max-height:40px;max-width:40px;margin-left:60px">
                               <h5 style="margin-top:15px;margin-left:40px">DATE-TIME</h5>
-                              <h4 style="margin-top:15px;margin-left:40px">{{userObj.timings.date}}</h4><h4 style="margin-top:15px;margin-left:55px">{{userObj.timings.time}}</h4>  
+                              <h5 style="margin-top:15px;margin-left:40px">{{userObj.timings.date}}</h5><h5 style="margin-top:15px;margin-left:55px">{{userObj.timings.time}}</h5>  
                            
                             </div>
 
@@ -87,7 +91,7 @@
                     
                               <img src=img/theme/email.png style="max-height:40px;max-width:40px;margin-left:60px">
                               <h5 style="margin-top:15px;margin-left:60px">EMAIL</h5>
-                              <h4 style="margin-top:15px;margin-left:30px">{{userObj.email}}</h4>  
+                              <h5 style="margin-top:15px;margin-left:30px">{{userObj.email}}</h5>  
                            
                             </div>
 
@@ -95,7 +99,7 @@
                     
                               <img src=img/theme/phone.png style="max-height:40px;max-width:40px;margin-left:60px">
                               <h5 style="margin-top:15px;margin-left:50px">CONTACT</h5>
-                              <h4 style="margin-top:15px;margin-left:40px">{{userObj.phoneNo}}</h4>  
+                              <h5 style="margin-top:15px;margin-left:50px">{{userObj.phoneNo}}</h5>  
                            
                             </div>
                         </div>
@@ -111,7 +115,7 @@
                                         <img src=img/theme/foodicon.png style="max-height:40px;max-width:40px;margin-left:60px">                             
                                   </div>
                                   <h5 style="margin-top:15px;margin-left:280px">DESCRIPTION</h5>
-                                  <h4 style="margin-top:15px;margin-left:240px">{{userObj.description}}</h4>  
+                                  <h5 style="margin-top:15px;margin-left:240px;text-transform: uppercase;">{{userObj.description}}</h5>  
                               </div>
 
                                <div class="col-xl-6 order-xl-1">
