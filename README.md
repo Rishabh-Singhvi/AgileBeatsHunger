@@ -33,4 +33,10 @@ We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
 
 # GET STARTED:
-![]()
+![](public/img/theme/1.png)
+Let's get started 
+Click on the 'Get Started' Button.
+Register yourself as 'Admin' or 'User'.
+Fill the details like Email Id and password while signing up and proceed.
+
+
