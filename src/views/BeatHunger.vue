@@ -81,8 +81,29 @@
 
 
 <script>
+import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 export default{
+   data() {
+      return {        
+          nuid:'',
+          uid:'' 
+
+      }
+     },
+     beforeMount(){
+       
+        this.nuid = localStorage.getItem('uid')
+        db.collection('users').onSnapshot(snap=>{
+          snap.forEach(doc=>{
+            if(doc.id==this.nuid){
+              console.log(doc.id)
+                this.uid=doc.id
+            }
+          })
+        })
+    },
     components:{
         Carousel3d,
         Slide

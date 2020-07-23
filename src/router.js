@@ -13,7 +13,7 @@ export default new Router({
       component: DashboardLayout,
       children: [
         {
-          path: '/BeatHunger',
+          path: '/dashboard',
           name: 'BeatHunger',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
