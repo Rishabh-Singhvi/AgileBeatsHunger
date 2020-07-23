@@ -9,16 +9,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'dashboard',
+      redirect: 'BeatHunger',
       component: DashboardLayout,
       children: [
         {
-          path: '/dashboard',
-          name: 'dashboard',
+          path: '/BeatHunger',
+          name: 'BeatHunger',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "demo" */ './views/Dashboard.vue')
+          component: () => import(/* webpackChunkName: "demo" */ './views/BeatHunger.vue')
         },
         {
           path: '/icons',
