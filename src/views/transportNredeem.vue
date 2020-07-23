@@ -52,7 +52,7 @@
                 <div class="col-lg-2">
                <input type="file" id="file" @change="previewImage" accept="image/*">
                 <label for="file" v-if="!uploading" style="background-color:#3e3e3e"  >Upload Image</label>
-                <base-button size="sm" v-if="uploading" disabled type="info" class="mr-4">Uploading</base-button>
+                <base-button size="sm" v-if="uploading" disabled type="info" class="mr-4">Wait..Uploading</base-button>
                 <base-button size="sm" v-if="proDetails.picture" disabled type="danger" class="mr-4">Uploaded</base-button>
                 </div>
                 <div class="col-lg-5">
@@ -90,7 +90,7 @@
                     />
                 </div>
             </div>
-             <base-button type="" @click="addProduct()" style="background-color:#3e3e3e;color:white" btn-small>Add</base-button>
+             <base-button type="" @click="addProduct()" style="background-color:#3e3e3e;color:white" id="addpr" btn-small>Add</base-button>
             </card>
             <br>
 
@@ -198,9 +198,16 @@ export default {
         },
         addTransport(){
           let transportref = db.collection("AllTransport").doc("transport");
-          transportref.update({
-            allTransport: firebase.firestore.FieldValue.arrayUnion(this.transport)
-          });
+          if(this.transport!='')
+          {
+              transportref.update({
+                allTransport: firebase.firestore.FieldValue.arrayUnion(this.transport)
+              });
+              this.$notify("Transport Added")
+          }
+          else
+          alert("FIELD EMPTY-ADD TRANSPORT")
+         
         },
         previewImage(event) {
             this.uploadValue=0;
@@ -225,7 +232,13 @@ export default {
         })
       },
       addProduct(){
+          if(this.proDetails.picture&&this.proDetails.proName!=''&&this.proDetails.proProvider!=''&&this.proDetails.coins!=''&&this.proDetails.stock!='')
           db.collection("AllProducts").add(this.proDetails)
+          else
+          alert("Fields are missing");
+           let lbl = document.getElementById('addpr');
+              lbl.innerText = "Added"; 
+           this.$notify("product Added")
       }
     
     },

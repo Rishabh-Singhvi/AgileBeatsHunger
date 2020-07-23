@@ -1,7 +1,8 @@
 <template>
-<div >
-<base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-  <div class="card shadow">
+<div  style="min-height: 400px;min-width: 400px; background-image: url(img/theme/food.jpg);
+         background-size: cover; background-position: center top;" >
+<base-header type="" class="pb-6 pb-8 pt-5 pt-md-8">
+  <div class="card shadow" style="opacity:0.9">
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
@@ -15,7 +16,7 @@
       </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive" >
       <base-table class="table align-items-center table-flush"
                   tbody-classes="list"
                   :data="tableData">
@@ -30,6 +31,7 @@
         <template slot-scope="{row}">
           <th scope="row">
             <div class="media align-items-center">
+
               <div class="media-body">
                 <router-link :to="{path:'/userDetails/'+row.id}"><span class="name mb-0 text-sm">{{row.register}}</span></router-link>
               </div>
@@ -93,11 +95,13 @@ let db = firebase.firestore();
     name: 'projects-table',
     data() {
       return {
+        userObj:{},
         modals:{
           modal1:false
         },
-        allTransport:[],
-        tableData: [] 
+        allTransport:[], 
+        tableData: []      
+
       }
     },
     methods:{
