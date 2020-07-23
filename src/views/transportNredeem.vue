@@ -134,8 +134,8 @@
                     </modal>
                     <modal :show.sync="modals.modal2"
                             gradient="white"
-                            modal-classes="modal-danger">
-                            <div class="row" :key="index" v-for="(t, index) in allproduct" style="float:left;clear:both">
+                            modal-classes="modal-danger modal-dialog-centered">
+                            <div class="row" :key="index" v-for="(t, index) in allproduct" btn-small>
                             <div class="py-20 col" >
                                 <h4 >{{allproduct[index].proName}}</h4>
                             </div>
@@ -198,9 +198,16 @@ export default {
         },
         addTransport(){
           let transportref = db.collection("AllTransport").doc("transport");
-          transportref.update({
-            allTransport: firebase.firestore.FieldValue.arrayUnion(this.transport)
-          });
+          if(this.transport!='')
+          {
+              transportref.update({
+                allTransport: firebase.firestore.FieldValue.arrayUnion(this.transport)
+              });
+              this.$notify("Transport Added")
+          }
+          else
+          alert("FIELD EMPTY-ADD TRANSPORT")
+         
         },
         previewImage(event) {
             this.uploadValue=0;

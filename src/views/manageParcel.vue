@@ -1,7 +1,8 @@
 <template>
-<div >
-<base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-  <div class="card shadow">
+<div  style="min-height: 400px;min-width: 400px; background-image: url(img/theme/food.jpg);
+         background-size: cover; background-position: center top;" >
+<base-header type="" class="pb-6 pb-8 pt-5 pt-md-8">
+  <div class="card shadow" style="opacity:0.9">
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
@@ -15,65 +16,37 @@
       </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive" >
       <base-table class="table align-items-center table-flush"
                   tbody-classes="list"
                   :data="tableData">
         <template slot="columns">
           <th>ID</th>
-          <th>Status</th>
-          <th>Pick Up Time</th>
           <th>Organization</th>
+          <th>Pick Up Time</th>
+          <th>Status</th>
           <th></th>
         </template>
 
         <template slot-scope="{row}">
           <th scope="row">
             <div class="media align-items-center">
+
               <div class="media-body">
-                 <span class="name mb-0 text-sm">{{row.regID}}</span>
-              </div>
-              <div class="media-body">
-                <span class="name mb-0 text-sm">{{row.title}}</span>
+                <router-link :to="{path:'/userDetails/'+row.id}"><span class="name mb-0 text-sm">{{row.register}}</span></router-link>
               </div>
             </div>
           </th>
           <td class="budget">
-            {{row.budget}}
+            {{row.organization}}
           </td>
           <td>
-            <badge class="badge-dot mr-4" :type="row.statusType">
-              <i :class="`bg-${row.statusType}`"></i>
-              <span class="status">{{row.status}}</span>
-            </badge>
+            {{row.timings.time}}
           </td>
           <td>
-            <div class="avatar-group">
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                <img alt="Image placeholder" src="img/theme/team-1-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                <img alt="Image placeholder" src="img/theme/team-2-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                <img alt="Image placeholder" src="img/theme/team-3-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                <img alt="Image placeholder" src="img/theme/team-4-800x800.jpg">
-              </a>
-            </div>
-          </td>
-
-          <td>
-            <div class="d-flex align-items-center">
-              <span class="completion mr-2">{{row.completion}}%</span>
-              <div>
-                <base-progress :type="row.statusType"
-                               :show-percentage="false"
-                               class="pt-0"
-                               :value="row.completion"/>
-              </div>
-            </div>
+            <badge pill type="danger" v-if='row.status="Pending"'>Pending</badge>
+            <badge pill type="primary" v-if='row.status=="Initiated"'>Initiated</badge>
+            <badge pill type="success" v-if='row.status=="Delivered"'>Delivered</badge>
           </td>
 
           <td class="text-right">
@@ -125,8 +98,9 @@ let db = firebase.firestore();
         modals:{
           modal1:false
         },
-        allTransport:[],
-        tableData: []
+        allTransport:[], 
+        tableData: []      
+
       }
     },
     methods:{
@@ -148,6 +122,16 @@ let db = firebase.firestore();
                 console.log(this.allTransport)
             })
         })
+      db.collection("AllUsers").onSnapshot(user=>{
+        if (this.tableData.length !== 0) this.tableData = [];
+        user.forEach(doc=>{
+         db.collection("AllUsers").doc(doc.id).update({
+            id:doc.id
+          })
+          console.log(doc.data())
+          this.tableData.push(doc.data())
+        })
+      })
     }
   }
 </script>

@@ -134,7 +134,7 @@
                     </card>
                     <br>
                         <div class="col-md-3">
-                        <base-button block type="" style="background-color:#4b2d2a;color:white" class=" mb-3" @click="mode">
+                        <base-button block type="" style="background-color:#4b2d2a;color:white" class=" mb-3" @click="mode"  id="changemain">
                             Pick the Parcel
                         </base-button>
 
@@ -190,7 +190,7 @@
                                     :can-cancel="true" 
                                     :on-cancel="onCancel"
                                     :is-full-page="fullPage"></loading>
-                                <base-button type="white" @click="create">Pick the Parcel</base-button>
+                                <base-button type="white" @click="create" id="change">Pick the Parcel</base-button>
                                 <base-button type="link"
                                             text-color="white"
                                             class="ml-auto"
@@ -254,7 +254,8 @@ const auth = firebase.auth();
                 'address':'',
                 'email':'',
                 'phoneNo':'',
-                'status':'Pending'
+                'status':'Pending',
+                'register':''
             },
             modals:{
                 modal2:false,
@@ -276,9 +277,11 @@ const auth = firebase.auth();
         create(){
             let uid=localStorage.getItem('uid')
             console.log(uid)
+            let regID = '_' + Math.random().toString(36).substr(2, 9);
+            this.userObj.register=regID
             db.doc('AllUsers/'+uid).set(this.userObj)
             db.doc('Coins/'+uid).get().then(snap=>{
-                console.log(snap.data)
+                console.log(snap.data())
                 if(snap.data()){
                     let prevCoin=snap.data().coins
                     let newCoin=prevCoin+100
@@ -288,7 +291,13 @@ const auth = firebase.auth();
                    db.doc('Coins/'+uid).set({coins:100}) 
                 }
             })
-            
+             let lbl = document.getElementById('change');
+              lbl.innerText = "Booked"; 
+             let lb2= document.getElementById('changemain');
+              lb2.innerText = "Booked";        
+              this.$notify("Book your next parcel once the current parcel is cleared")
+              this.modals.modal2=false;
+             
         }
        
     }   
