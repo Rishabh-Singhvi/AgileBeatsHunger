@@ -8,7 +8,8 @@ Its not completed yet!! Only for the evaluation purpose on 23rd July
 
 3)npm run serve
 
-4)Register first otherwise the app will not function well
+4)Register first(/register) otherwise the app will not function well
+
 
 Documentation:
 
@@ -33,6 +34,7 @@ We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
 
 # GET STARTED:
+
 ![](public/img/theme/1.png)
 Let's get started 
 Click on the 'Get Started' Button.
@@ -68,3 +70,9 @@ Through this page,the admin managing the website can view the user profile and c
 check whether the order is picked up, delievered or not.
 
 ![](public/img/theme/4.png)
+=======
+
+
+
+
+
