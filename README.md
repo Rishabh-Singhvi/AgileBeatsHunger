@@ -39,4 +39,32 @@ Click on the 'Get Started' Button.
 Register yourself as 'Admin' or 'User'.
 Fill the details like Email Id and password while signing up and proceed.
 
+# USER/VOLUNTEER
+## Placing the Booking for the Food Parcel
+The user or the volunteer has to fill all the details regarding the parcel.
+Once user clicks 'Pick the parcel' button, a pop-up opens so that all the details
+can be verified.
+Since the Parcel is booked, the Admin gets all the information about the parcel
+and can initiate the transport for pick-up.
 
+![](public/img/theme/2.png)
+
+## Shop from the Bazar
+The user gets some fixed number of coins for each food packet sent as the reward.
+These coins can be redeemed through the "Bazar"
+
+![](public/img/theme/5.jpeg)
+
+# ADMIN
+## Transport and Redeem Management
+The admin can manage all the transport and product details through this page i.e.
+All the transport which are currently available for pickup and the stock of the 
+products in bazar.
+
+![](public/img/theme/6.png)
+
+## User Profiles
+Through this page,the admin managing the website can view the user profile and can
+check whether the order is picked up, delievered or not.
+
+![](public/img/theme/4.png)
