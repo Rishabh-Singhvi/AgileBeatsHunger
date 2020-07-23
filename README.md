@@ -8,7 +8,7 @@ Its not completed yet!! Only for the evaluation purpose on 23rd July
 
 3)npm run serve
 
-4)Register first(/register) otherwise the app will not function well
+4)Register first otherwise the app will not function well
 
 Documentation:
 
