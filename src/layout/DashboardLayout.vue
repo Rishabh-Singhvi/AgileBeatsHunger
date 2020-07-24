@@ -17,7 +17,7 @@
         <sidebar-item :link="{name: 'Bazar', icon: 'ni ni-cart text-blue', path: '/bazar'}"/>
         <sidebar-item :link="{name: 'Transport & Redeem', icon: 'ni ni-delivery-fast  text-success', path: '/transportNredeem'}"/>
         
-        <sidebar-item :link="{name: 'Manage Parcel', icon: 'ni ni-archive-2 text-indigo', path: '/manageParcel'}"/>
+        <sidebar-item :link="{name: 'Manage Parcel', icon: 'ni ni-archive-2 text-indigo', path: '/mp'}"/>
         <!-- <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/> -->
 
