@@ -134,8 +134,11 @@
                     </card>
                     <br>
                         <div class="col-md-3">
-                        <base-button block type="" style="background-color:#4b2d2a;color:white" class=" mb-3" @click="mode"  id="changemain">
+                        <base-button v-if='currentStatus=="Picked Up"||currentStatus==""' style="background-color:#4b2d2a;color:white" class=" mb-3" @click="mode">
                             Pick the Parcel
+                        </base-button>
+                        <base-button v-else disabled style="background-color:#4b2d2a;color:white" class=" mb-3">
+                            Booked
                         </base-button>
 
                         <modal :show.sync="modals.modal2"
@@ -242,6 +245,7 @@ const auth = firebase.auth();
     },
     data(){
         return{
+            currentStatus:'',
             isLoading:false,
             userObj:{
                 'name':'',
@@ -262,6 +266,9 @@ const auth = firebase.auth();
                 modal1:false
             }
         }
+    },
+    beforeMount(){
+        this.getUser()
     },
     methods:{
          mode(){
@@ -290,14 +297,19 @@ const auth = firebase.auth();
                 else{
                    db.doc('Coins/'+uid).set({coins:100}) 
                 }
-            })
-             let lbl = document.getElementById('change');
-              lbl.innerText = "Booked"; 
-             let lb2= document.getElementById('changemain');
-              lb2.innerText = "Booked";        
+            })      
               this.$notify("Book your next parcel once the current parcel is cleared")
               this.modals.modal2=false;
+              this.getUser()
              
+        },
+        getUser(){
+             let uid=localStorage.getItem('uid')
+             db.doc("AllUsers/"+uid).get().then(user=>{
+             if(user.data().status){
+                 this.currentStatus=user.data().status
+             }
+         })
         }
        
     }   

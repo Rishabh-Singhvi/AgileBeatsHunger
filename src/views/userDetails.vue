@@ -102,10 +102,8 @@
                               </div>
                             </div>
                         </div>
-                           <br>
+                          
                         <hr>
-                    <br>
-                        
                        
                             
                               <div class="row" style="margin-top:50px;margin-left:40px">
@@ -123,9 +121,9 @@
                                          <h5 style="margin-top:15px;">DELIEVERY STATUS</h5>
                                         <badge pill type="danger" style="margin-top:15px;" v-if='userObj.status=="Pending"'>Pending</badge>
                                         <badge pill type="primary" style="margin-top:15px" v-if='userObj.status=="Initiated"'>Initiated</badge>
-                                        <badge pill type="success" style="margin-top:15px;" v-if='userObj.status=="Delivered"'>Delivered</badge>                            
+                                        <badge pill type="success" style="margin-top:15px;" v-if='userObj.status=="Picked Up"'>Picked Up</badge>                            
                                   </div>
-                                 
+                               </div>
                               </div>    
 
                                  <br><br>   

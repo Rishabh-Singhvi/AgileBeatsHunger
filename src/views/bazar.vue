@@ -45,16 +45,16 @@
                                                 <i class="fas fa-coins"></i>
                          </div> 
                          <br>
-                        <div class="row" v-for="(pro,index) in allProduct" :key="index">
-                            <div class="col-xl-4 order-xl-1">
+                        <div class="row" >
+                            <div class="col-xl-4 order-xl-1" v-for="(pro,index) in allProduct" :key="index">
                             <card shadow type="secondary" >
-                              <img :src="allProduct[index].picture" style="max-height:300px;max-width:300px;border-radius:15px">
+                              <img :src="allProduct[index].picture" style="height:200px;width:300px;border-radius:15px">
                               <h2 style="margin-top:5px">{{allProduct[index].proName}}</h2>
                                <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button btn-small block type="" style="background-color:#43464b;color:white;margin-left:20px"  @click="mode">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> BUY
-                                            </base-button>                               
+                                            <base-button btn-small block type="" v-if="!allProduct[index].added" style="background-color:#43464b;color:white;margin-left:20px"  @click="addToCart(allProduct[index])">
+                                                <i class="fa fa-shopping-cart" aria-hidden="true" ></i> Buy
+                                            </base-button>                                
                                         </div>
                                         <i class="fas fa-coins fa-2x"  style="margin-left:100px;margin-top:20px"></i>
                                         <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].coins}}</h2>
@@ -63,12 +63,36 @@
                             </div>
                         </div>
                     </card>
+                     <modal :show.sync="modals.modal1"
+                            gradient="white"
+                            modal-classes="modal-danger modal-dialog-centered">
+                            <div class="row" btn-small>                            
+                            <div class="py-20 col">
+                                <h4 >Are You Sure you want to Buy?</h4>
+                            </div>
+                            </div>
+
+                            <template slot="footer">
+                                <base-button type="success"  @click="buy(yourId)">Buy</base-button>
+                                <base-button type="white" @click="modals.modal1 = false">Close</base-button>
+                            </template>
+                    </modal>
+                    <modal :show.sync="modals.modal2"
+                            gradient="white"
+                            modal-classes="modal-danger modal-dialog-centered">
+                            <div class="row" btn-small>
+                            <div class="py-20 col" >
+                                <h4 >Insufficient balance</h4>
+                            </div>
+                            </div>
+                            
+
+                            <template slot="footer">
+                                
+                                <base-button type="white" @click="modals.modal2 = false">Close</base-button>
+                            </template>
+                    </modal>
                     <br>
-                        <div class="col-md-3">
-                        <base-button btn-small block type="" style="background-color:#43464b;color:white" class=" mb-3" @click="mode">
-                            PLACE ORDER
-                        </base-button>
-                        </div>
                        
                 
                       
@@ -99,23 +123,79 @@ let db = firebase.firestore();
     },
     data(){
         return{
+           yourId:'',
+           myProduct:[],
            coins:0,
-           allProduct:[]
+           allProduct:[],
+            modals:{
+           modal2:false,
+           modal1:false
+        }
         }
     } ,
-    beforeMount(){
-        let uid=localStorage.getItem('uid')
-         db.doc('Coins/'+uid).get().then(snap=>{
+    methods:{
+      addToCart(pro){
+          let uid=localStorage.getItem('uid')
+           db.doc("MyProducts/"+uid).onSnapshot(product=>{
+               product.data().MyProducts.forEach(prid=>{
+                   if(prid.id==pro.id){
+                      if(prid.coins<=this.coins){
+                          this.modals.modal1=true
+                          this.yourId=prid.id     
+                      }
+                      else{
+                          this.modals.modal2=true
+                      }
+                   }
+               })
+           })
+      },
+      buy(id){
+          let currentCoins=0
+          let uid=localStorage.getItem('uid')
+           db.doc("MyProducts/"+uid).get().then(product=>{
+               product.data().MyProducts.forEach(prid=>{
+                   if(prid.id==id){
+                       if(prid.coins<=this.coins){
+                      currentCoins=this.coins-prid.coins
+                      db.doc('Coins/'+uid).set({coins:currentCoins})
+                      this.getCoins();
+                       }
+                   }
+               })
+           }).then(no=>{
+               this.$notify("Item Purchased")
+                this.modals.modal1=false;
+           })
+             
+           
+      },
+      getCoins(){
+          let uid=localStorage.getItem('uid')
+          db.doc('Coins/'+uid).get().then(snap=>{
              if(snap.data()){
                  this.coins=snap.data().coins
              }
          })
+      }
+    },
+    beforeMount(){
+        let uid=localStorage.getItem('uid')
+        this.getCoins()
          db.collection("AllProducts").onSnapshot(response=>{
+             if(this.allProduct.length!==0) this.allProduct=[]
              response.forEach(doc=>{
+                  db.collection("AllProducts").doc(doc.id).update({
+                    added:false,
+                    id:doc.id,
+                })
                    this.allProduct.push(doc.data())
                    console.log(this.allProduct)
+                   db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
              })
          })
+            
+         
     }  
   };
   
