@@ -197,7 +197,7 @@ const auth = firebase.auth();
                     localStorage.setItem('uid',user.user.uid)
                     localStorage.setItem('user',JSON.stringify(userData))
                     this.creating=false
-                    this.$router.push('dashboard')
+                    this.$router.push('PickupDetails')
                 })
             })
             .catch(err=>{

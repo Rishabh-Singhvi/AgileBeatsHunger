@@ -167,7 +167,7 @@ const auth = firebase.auth();
                 })
                 }).then(()=>{
                     this.Logingin=false
-                    this.$router.push('dashboard')
+                    this.$router.push('PickupDetails')
                 })
                 .catch(err=>{
                     this.Logingin=false
