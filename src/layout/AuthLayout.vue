@@ -1,5 +1,6 @@
 <template>
-    <div class="main-content bg-default">
+    <div class="main-content bg-default" style="min-height: 100px;min-width: 100px; background-image: url(img/theme/food.jpg);
+     background-size: cover; background-position: center top;">
         <!-- Navbar -->
         <base-nav class="navbar-top navbar-horizontal navbar-dark"
                   containerClasses="px-4 container"
@@ -52,8 +53,8 @@
             </template>
         </base-nav>
         <!-- Header -->
-        <div class="header bg-gradient-success py-7 py-lg-8">
-            <div class="container">
+        <div class="header  py-7 py-lg-8">
+            <!-- <div class="container">
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
@@ -62,13 +63,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="separator separator-bottom separator-skew zindex-100">
+            </div> -->
+            <!-- <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
                      xmlns="http://www.w3.org/2000/svg">
                     <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
-            </div>
+            </div> -->
         </div>
         <!-- Page content -->
         <div class="container mt--8 pb-5">
@@ -90,13 +91,7 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link" target="_blank">Rishabh and Shubham</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link" target="_blank">About
-                                    Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link" target="_blank">Blog</a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a href=""
                                    class="nav-link" target="_blank"></a>
