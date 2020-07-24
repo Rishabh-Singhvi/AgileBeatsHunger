@@ -164,7 +164,7 @@ export default {
 </script>
              
                            
-<style>
+<style scoped>
 img:hover {
   animation: shake 2s;
   animation-iteration-count: infinite;
