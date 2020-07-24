@@ -45,13 +45,16 @@
                    
                     
                         <div class="row" style="margin-left:40px">
+
                             <div class="col-xl-3 order-xl-1" >                               
                               <div class="col" style="text-align:center">
                               <img src=img/theme/user.png style="max-height:50px;max-width:50px;">                              
+
                               <h5 style="margin-top:15px;">VOLUNTEER<span> </span></h5>
                               <h5 style="margin-top:14px;text-transform: uppercase;">{{userObj.name}}</h5>    
                               </div>                   
                             </div>
+
 
                             <div class="col-xl-4 order-xl-1" style="margin-left:30px">                                                        
                               <div class="col"  style="text-align:center">
@@ -118,17 +121,13 @@
                                   <div class="col"  style="text-align:center">
                                         <img src=img/theme/stat.png style="max-height:60px;max-width:60px;">   
                                          <h5 style="margin-top:15px;">DELIEVERY STATUS</h5>
-                                        <badge pill type="danger" style="margin-top:15px;" v-if='userObj.status="Pending"'>Pending</badge>
+                                        <badge pill type="danger" style="margin-top:15px;" v-if='userObj.status=="Pending"'>Pending</badge>
                                         <badge pill type="primary" style="margin-top:15px" v-if='userObj.status=="Initiated"'>Initiated</badge>
                                         <badge pill type="success" style="margin-top:15px;" v-if='userObj.status=="Delivered"'>Delivered</badge>                            
                                   </div>
                                  
                               </div>    
 
-                                                   
-                              </div>       
-
-                               
                                  <br><br>   
                        </div>
                     </div>
@@ -156,6 +155,7 @@ export default {
     let id=this.$route.params.id
     console.log(id)
     db.doc('AllUsers/'+id).get().then(response=>{
+      console.log(response.data())
       this.userObj=response.data()
       console.log(this.userObj)
     })
