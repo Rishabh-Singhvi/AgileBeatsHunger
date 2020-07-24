@@ -254,7 +254,7 @@ const auth = firebase.auth();
                 'address':'',
                 'email':'',
                 'phoneNo':'',
-                'status':'Pending',
+                'status':"Pending",
                 'register':''
             },
             modals:{

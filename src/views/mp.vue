@@ -38,7 +38,7 @@
             <badge pill type="success" v-if='i.status=="Picked Up"'>Picked Up</badge>
           </td> 
           <td>
-            <router-link :to="{path:'/userDetails/'+i.id}"> <base-button type="info" v-if='i.status=="Pending"' >Initiate</base-button></router-link>
+            <!-- <router-link :to="{path:'/userDetails/'+i.id}"> --><base-button type="info" v-if='i.status=="Pending"' @click="load(i.id)">Initiate</base-button> <!-- </router-link> -->
              <base-button type="primary" v-if='i.status=="Initiated"' @click="deliver(i)" >Picked Up?</base-button>
             <base-button type="success" v-if='i.status=="Picked Up"' disabled><i class="ni ni-check-bold"></i></base-button>
           </td>
@@ -50,6 +50,24 @@
   </div>
   </div>
 </base-header>
+<modal :show.sync="modals.modal1"
+        gradient="white"
+        modal-classes="modal-danger modal-dialog-centered">
+        <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport" btn-small>                            
+        <div class="py-20 col">
+            <h4 >{{allTransport[indextr].transport}}</h4>
+        </div>
+            <div class="col" @click="select(tr)">
+            <badge pill type="primary" v-if="!tr.selected" >Select</badge>
+            <badge pill type="danger" v-if="tr.selected" >Unselect</badge>
+        </div>
+        </div>
+
+        <template slot="footer">
+            <base-button type="info"  @click="Initiate()">Initiate</base-button>
+            <base-button type="white" @click="modals.modal1 = false">Close</base-button>
+        </template>
+</modal>
 </div>
 </template>
 <script>
@@ -58,10 +76,14 @@ let db = firebase.firestore();
 export default {
     data(){
         return{
+              modals:{
+                modal1:false
+                },
             currentPage: 1,
             elementsPerPage: 13,
             arr:[],
-            allTransport:[]
+            allTransport:[],
+            selPar:''
         }
     },
     computed:{
@@ -78,25 +100,51 @@ export default {
     "changePage": function changePage(page) {
       this.currentPage = page;
     },
+    Initiate(){
+        let trans=''
+        this.allTransport.forEach(tr=>{
+            if(tr.selected){
+                trans=tr.transport
+            }
+        })
+        db.doc("AllUsers/"+this.selPar).update({
+            status:"Initiated",
+            transPro:trans
+        })
+        this.$notify("Initiated")
+        this.modals.modal1=false
+         this.allTransport.forEach(tr=>{
+            if(tr.selected){
+                tr.selected=!tr.selected
+            }
+        })
+    },
     deliver(i){
         db.doc("AllUsers/"+i.id).update({
             status:"Picked Up"
         })
+    },
+    select(tr){
+        tr.selected=!tr.selected
+    },
+    load(i){
+        this.modals.modal1=true
+        this.selPar=i
     }
     },
     beforeMount(){
-        // db.collection("AllTransport").doc("transport").onSnapshot(allTransport=>{
-        //     if (this.allTransport.length !== 0) this.allTransport = [];
-        //     allTransport.data().allTransport.forEach((element,index)=>{
-        //         let blankTrans={
-        //           id:index+1,
-        //           transport:element,
-        //           selected:false
-        //         };
-        //         this.allTransport.push(blankTrans)
-        //         console.log(this.allTransport)
-        //     })
-        // })
+        db.collection("AllTransport").doc("transport").onSnapshot(allTransport=>{
+            if (this.allTransport.length !== 0) this.allTransport = [];
+            allTransport.data().allTransport.forEach((element,index)=>{
+                let blankTrans={
+                  id:index+1,
+                  transport:element,
+                  selected:false
+                };
+                this.allTransport.push(blankTrans)
+                console.log(this.allTransport)
+            })
+        })
         db.collection("AllUsers").onSnapshot(respo=>{
             if (this.arr.length !== 0) this.arr = [];
             respo.forEach(doc => {

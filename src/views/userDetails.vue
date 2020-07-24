@@ -47,7 +47,7 @@
                         <div class="row" style="margin-left:40px">
                             <div class="col-xl-4 order-xl-1">
                                <div class="col justify-content-center">
-                              <img src=img/theme/user.png style="max-height:50px;max-width:50px;margin-left:30px">
+                              <img src="img/theme/user.png" style="max-height:50px;max-width:50px;margin-left:30px">
                               <div class="col justifu-align-center">
                               <h5 style="margin-top:15px;">VOLUNTEER<span> </span></h5>
                               <h5 style="margin-top:14px;text-transform: uppercase;">{{userObj.name}}</h5>    
@@ -57,7 +57,7 @@
 
                             <div class="col-xl-4 order-xl-1">
                               <div class="col justify-content-center">
-                              <img src=img/theme/hotel.png style="max-height:50px;max-width:50px;margin-left:30px">
+                              <img src="img/theme/hotel.png" style="max-height:50px;max-width:50px;margin-left:30px">
                               <div class="col">
                               <h5 style="margin-top:15px;">ORGANISATION</h5>
                               <h5 style="margin-top:14px;text-transform: uppercase;">{{userObj.organization}}</h5>  
@@ -123,9 +123,9 @@
                                         <img src=img/theme/del.png style="max-height:40px;max-width:40px;margin-left:60px">                             
                                   </div>
                                   <h5 style="margin-top:15px;margin-left:180px">DELIEVERY STATUS</h5>
-                                 <badge pill type="danger" style="margin-top:15px;margin-left:205px" v-if='userObj.status="Pending"'>Pending</badge>
+                                 <badge pill type="danger" style="margin-top:15px;margin-left:205px" v-if='userObj.status=="Pending"'>Pending</badge>
                                   <badge pill type="primary" style="margin-top:15px;margin-left:205px" v-if='userObj.status=="Initiated"'>Initiated</badge>
-                                  <badge pill type="success" style="margin-top:15px;margin-left:205px" v-if='userObj.status=="Delivered"'>Delivered</badge>  
+                                  <badge pill type="success" style="margin-top:15px;margin-left:205px" v-if='userObj.status=="Picked Up"'>Picked Up</badge>  
                               </div>                         
                               </div>            
                                  <br><br>   
@@ -155,6 +155,7 @@ export default {
     let id=this.$route.params.id
     console.log(id)
     db.doc('AllUsers/'+id).get().then(response=>{
+      console.log(response.data())
       this.userObj=response.data()
       console.log(this.userObj)
     })
