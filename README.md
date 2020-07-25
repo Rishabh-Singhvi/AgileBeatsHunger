@@ -61,6 +61,7 @@ can be verified.<br/>
 Now confirm your details shown in the pop-up and submit it.
 Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
+
 ![](public/img/theme/6s.png)
 ![](public/img/theme/17s.png)
 <br/><br/>
@@ -72,12 +73,14 @@ packet sent.<br/>
 These coins can be redeemed through the online "Bazar" in form of coupons
 or products.<br/>
 <br/>
+
 ![](public/img/theme/2s.png)
 <br/>
 
 
 # ADMIN
 ## Register yourself as admin
+
 ![](public/img/theme/10s.png)
 <br/><br/>
 
@@ -89,14 +92,19 @@ On clicking the User-ID , the admin can view the user profile.
 For example,<br/>
 The red box shows the user-id and the current status which is 
 "Pending".Click on "Initiate" button.<br/>
+
 ![](public/img/theme/13s.png)
 <br/><br/>
+
 ![](public/img/theme/13.5s.png)
 <br/><br/>
+
 ![](public/img/theme/14s.png)
 <br/><br/>
+
 ![](public/img/theme/15s.png)
 <br/><br/>
+
 ![](public/img/theme/16s.png)
 
 ## Adding and Removing Transport Provider and Stock of Products
