@@ -1,22 +1,21 @@
-# How to proceed-INSTRUCTIONS--->
+# INSTRUCTIONS-How to Proceed?--->
 
-Its not completed yet!! Only for the evaluation purpose on 23rd July
-
-1)Clone
+1)Clone the repo
 
 2)npm install
 
 3)npm run serve
 
-4)Register first(/register) otherwise the app will not function well
-
-
-Documentation:
+# Documentation:
 
 # OBJECTIVE(IDEA)
-•	THEME: ERADICATE HUNGER
+## THEME:ERADICATE HUNGER
+## TEAM NAME: AGILE
+## TEAM MEMBERS:
+RISHABH SINGHVI AND SHUBHAM JAIN
 
-•	IDEA:
+
+## IDEA
 The idea of our webapp which ensures that no food is wasted in the social parties,
 weddings, homes, hotels and other organization. Basically our web-app deals with the users or the 
 volunteers who are left over with the food and want to donate it to the needy. The user can create
