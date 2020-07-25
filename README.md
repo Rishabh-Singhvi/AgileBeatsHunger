@@ -62,6 +62,7 @@ Now confirm your details shown in the pop-up and submit it.
 Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
 ![](public/img/theme/6s.png)
+![](public/img/theme/17s.png)
 <br/><br/>
 
 
@@ -89,20 +90,12 @@ These coins can be redeemed through the online "Bazar"<br/>
 <br/><br/>
 ![](public/img/theme/15s.png)
 <br/><br/>
+![](public/img/theme/16s.png)
+
+## Adding and Removing Transport Provider and Stock of Products
+![](public/img/theme/5s.png)
 
 
-
-The admin can manage all the transport and product details through this page i.e.
-All the transport which are currently available for pickup and the stock of the 
-products in bazar.
-
-![](public/img/theme/6.png)
-
-## User Profiles
-Through this page,the admin managing the website can view the user profile and can
-check whether the order is picked up, delievered or not.
-
-![](public/img/theme/4.png)
 =======
 
 
