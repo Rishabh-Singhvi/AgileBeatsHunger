@@ -158,30 +158,38 @@ let db = firebase.firestore();
                    if(prid.id==id){
                        if(prid.coins<=this.coins){
                       currentCoins=this.coins-prid.coins
-                      db.doc('Coins/'+uid).set({coins:currentCoins})
-                      this.getCoins();
+                      db.doc('Coins/'+uid).update({coins:currentCoins})
+                      this.getcurCoins();
+                    //   this.$notify("Item Purchased")
+                    //    this.modals.modal1=false;
+                      //this.getCoins();
                        }
                    }
                })
-           }).then(no=>{
-               this.$notify("Item Purchased")
-                this.modals.modal1=false;
            })
              
            
       },
-      getCoins(){
+      getcurCoins(){
           let uid=localStorage.getItem('uid')
           db.doc('Coins/'+uid).get().then(snap=>{
              if(snap.data()){
                  this.coins=snap.data().coins
              }
+         }).then(()=>{
+             this.$notify("Item Purchased")
+                this.modals.modal1=false;
          })
       }
     },
     beforeMount(){
         let uid=localStorage.getItem('uid')
-        this.getCoins()
+        
+         db.doc('Coins/'+uid).get().then(snap=>{
+             if(snap.data()){
+                 this.coins=snap.data().coins
+             }
+         })
          db.collection("AllProducts").onSnapshot(response=>{
              if(this.allProduct.length!==0) this.allProduct=[]
              response.forEach(doc=>{
