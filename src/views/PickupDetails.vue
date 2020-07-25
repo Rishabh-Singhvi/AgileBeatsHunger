@@ -138,7 +138,7 @@
                             Pick the Parcel
                         </base-button>
                         <base-button v-else disabled style="background-color:#4b2d2a;color:white" class=" mb-3">
-                            Booked
+                            Booked(Come back again once previous parcel is Picked)
                         </base-button>
 
                         <modal :show.sync="modals.modal2"

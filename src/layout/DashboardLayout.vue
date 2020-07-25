@@ -7,6 +7,7 @@
     >
       <template slot="links">
         <sidebar-item
+         v-if="udata.type=='User'"
           :link="{
             name: 'Pickup Details',
             icon: 'ni ni-basket text-danger',
@@ -14,10 +15,10 @@
           }"
         />
 
-        <sidebar-item :link="{name: 'Bazar', icon: 'ni ni-cart text-blue', path: '/bazar'}"/>
-        <sidebar-item :link="{name: 'Transport & Redeem', icon: 'ni ni-delivery-fast  text-success', path: '/transportNredeem'}"/>
+        <sidebar-item v-if="udata.type=='User'" :link="{name: 'Bazar', icon: 'ni ni-cart text-blue', path: '/bazar'}"/>
+        <sidebar-item v-if="udata.type=='Admin'" :link="{name: 'Transport & Redeem', icon: 'ni ni-delivery-fast  text-success', path: '/transportNredeem'}"/>
         
-        <sidebar-item :link="{name: 'Manage Parcel', icon: 'ni ni-archive-2 text-indigo', path: '/mp'}"/>
+        <sidebar-item v-if="udata.type=='Admin'"  :link="{name: 'Manage Parcel', icon: 'ni ni-archive-2 text-indigo', path: '/mp'}"/>
         <!-- <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/> -->
 
@@ -37,6 +38,8 @@
   </div>
 </template>
 <script>
+ import firebase from '@/firebase_init.js';
+let db = firebase.firestore();
   import DashboardNavbar from './DashboardNavbar.vue';
   import ContentFooter from './ContentFooter.vue';
   import { FadeTransition } from 'vue2-transitions';
@@ -49,6 +52,8 @@
     },
     data() {
       return {
+        uid:'',
+        udata:{},
         sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
       };
     },
@@ -58,6 +63,13 @@
           this.$sidebar.displaySidebar(false);
         }
       }
+    },
+    beforeMount(){
+         this.uid = localStorage.getItem('uid')
+         db.doc('users/'+this.uid).get().then(snap=>{
+           this.udata=snap.data()
+           console.log(this.udata)
+         })
     }
   };
 </script>

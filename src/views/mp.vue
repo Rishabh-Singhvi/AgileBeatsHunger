@@ -53,6 +53,7 @@
 <modal :show.sync="modals.modal1"
         gradient="white"
         modal-classes="modal-danger modal-dialog-centered">
+        <h6 slot="header" class="modal-title heading mt-1" id="modal-title-notification" style="color:black">Select The Transport</h6>
         <div class="row" :key="indextr" v-for="(tr, indextr) in allTransport" btn-small>                            
         <div class="py-20 col">
             <h4 >{{allTransport[indextr].transport}}</h4>

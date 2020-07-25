@@ -19,7 +19,17 @@
                             <span class="mb-0 text-sm  font-weight-bold " style="color:black">Beat the Hunger</span>
                         </div>
                     </div>
-
+                   <template>
+                        <div class=" dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>                     
+                        <div class="dropdown-divider"></div>
+                           <div class="dropdown-item">
+                            <i class="ni ni-user-run" ></i>
+                            <span @click="Logout">Logout</span>
+                           </div>
+                        
+                    </template>
                    
                 </base-dropdown>
             </li>
@@ -27,6 +37,9 @@
     </base-nav>
 </template>
 <script>
+import firebase from '@/firebase_init.js';
+
+const auth = firebase.auth();
   export default {
     data() {
       return {
@@ -44,7 +57,13 @@
       },
       toggleMenu() {
         this.showMenu = !this.showMenu;
-      }
+      },
+      Logout(){
+          auth.signOut().then(()=>{
+            console.log("Logged Out")
+            this.$router.push('/login')
+          })
+      },
     }
   };
 </script>
