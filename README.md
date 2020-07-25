@@ -41,22 +41,25 @@ We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 # GET STARTED:
 
 ![](public/img/theme/1s.png)
-Let's get started 
-Click on the 'Get Started' Button.
-Register yourself as 'Admin' or 'User'.
-Fill the details like Email Id and password while signing up and proceed.
+**Let's get started** <br/>
+Click on the 'Get Started' Button. <br/>
+Register yourself as 'Admin' or 'User'. <br/>
+Fill the details like Email Id and password while signing up and proceed. <br/>
 Depending upon the field 'USER' or 'ADMIN' you will be directed to different
-pages.
+pages. <br/>
 
-# USER/VOLUNTEER
-## Placing the Booking for the Food Parcel
-The user or the volunteer has to fill all the details regarding the parcel.
-Once user clicks 'Pick the parcel' button, a pop-up opens so that all the details
-can be verified.
-Since the Parcel is booked, the Admin gets all the information about the parcel
+# USER/VOLUNTEER/ORGANIZATION
+## Booking the Food Parcel
+The user or the volunteer has to fill all the details regarding the food parcel
+packed.<br/>
+Now the user clicks 'Pick the parcel' button, a pop-up opens so that all the details
+can be verified.<br/>
+Now confirm your details shown in the pop-up and submit it.
+Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
-
-![](public/img/theme/2.png)
+![](public/img/theme/6s.png)
+<br/><br/>
+![](public/img/theme/8s.png)
 
 ## Shop from the Bazar
 The user gets some fixed number of coins for each food packet sent as the reward.
