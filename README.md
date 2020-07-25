@@ -1,6 +1,6 @@
 # INSTRUCTIONS-How to Proceed?--->
 
-1)Clone the repo
+1)Clone 
 
 2)npm install
 
@@ -8,14 +8,18 @@
 
 # Documentation:
 
-# OBJECTIVE(IDEA)
+
 ## THEME:ERADICATE HUNGER
 ## TEAM NAME: AGILE
 ## TEAM MEMBERS:
 RISHABH SINGHVI AND SHUBHAM JAIN
 
 
-## IDEA
+# IDEA
+President Jimmy Carter once said that "We know that a peaceful world cannot exist one-third 
+rich and two-thirds hungry.If we want to eliminate hunger,everybody has to be involved.
+Though we are in the 21st century, we are still facing global issues like hunger and malnutrition.
+
 The idea of our webapp which ensures that no food is wasted in the social parties,
 weddings, homes, hotels and other organization. Basically our web-app deals with the users or the 
 volunteers who are left over with the food and want to donate it to the needy. The user can create
@@ -25,7 +29,7 @@ initiate the pickup.
 We are not done yet!!
 To encourage the engagement of the users or the volunteers, they will get points/coins according 
 to the quantity of the parcel. These coins can be further redeemed in the form of coupons or other 
-products that will be available in the online mart. Here we need sponsers and volunteers who are 
+products that will be available in the online 'BAZAR'. Here we need sponsers and volunteers who are 
 ready to donate and eradicate hunger with their helping hands.
 
 Tech we will be using
