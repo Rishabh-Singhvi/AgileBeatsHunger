@@ -1,22 +1,24 @@
-# How to proceed-INSTRUCTIONS--->
+# INSTRUCTIONS-How to Proceed?--->
 
-Its not completed yet!! Only for the evaluation purpose on 23rd July
-
-1)Clone
+1)Clone 
 
 2)npm install
 
 3)npm run serve
 
-4)Register first(/register) otherwise the app will not function well
+# Documentation:
 
 
-Documentation:
+### THEME : ERADICATE HUNGER
+### TEAM NAME : AGILE
+### TEAM MEMBERS : RISHABH SINGHVI AND SHUBHAM JAIN
 
-# OBJECTIVE(IDEA)
-•	THEME: ERADICATE HUNGER
 
-•	IDEA:
+# IDEA/OBJECTIVE
+President Jimmy Carter once said that "We know that a peaceful world cannot exist one-third 
+rich and two-thirds hungry.If we want to eliminate hunger,everybody has to be involved.
+Though we are in the 21st century, we are still facing global issues like hunger and malnutrition.
+
 The idea of our webapp which ensures that no food is wasted in the social parties,
 weddings, homes, hotels and other organization. Basically our web-app deals with the users or the 
 volunteers who are left over with the food and want to donate it to the needy. The user can create
@@ -26,50 +28,108 @@ initiate the pickup.
 We are not done yet!!
 To encourage the engagement of the users or the volunteers, they will get points/coins according 
 to the quantity of the parcel. These coins can be further redeemed in the form of coupons or other 
-products that will be available in the online mart. Here we need sponsers and volunteers who are 
+products that will be available in the online 'BAZAR'. Here we need sponsers and volunteers who are 
 ready to donate and eradicate hunger with their helping hands.
 
 Tech we will be using
 We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
 
+# USE-CASE DIAGRAM
+![](public/img/theme/userqq5.png)
+
 # GET STARTED:
 
-![](public/img/theme/1.png)
-Let's get started 
-Click on the 'Get Started' Button.
-Register yourself as 'Admin' or 'User'.
-Fill the details like Email Id and password while signing up and proceed.
+![](public/img/theme/1s.png)
+**Let's get started** <br/>
+Click on the 'Get Started' Button. <br/>
+Register yourself as 'Admin' or 'User'. <br/>
+Fill the details like Email Id and password while signing up and proceed. <br/>
+Depending upon the field 'USER' or 'ADMIN' you will be directed to different
+pages. <br/>
 
-# USER/VOLUNTEER
-## Placing the Booking for the Food Parcel
-The user or the volunteer has to fill all the details regarding the parcel.
-Once user clicks 'Pick the parcel' button, a pop-up opens so that all the details
-can be verified.
-Since the Parcel is booked, the Admin gets all the information about the parcel
+# PROCEDURE
+## USER/VOLUNTEER/ORGANIZATION
+## Register yourself as user
+![](public/img/theme/7s.png)
+<br/><br/>
+## Booking the Food Parcel
+The user or the volunteer has to fill all the details regarding the food parcel
+packed.<br/>
+Now the user clicks 'Pick the parcel' button, a pop-up opens so that all the details
+can be verified.<br/>
+Now confirm your details shown in the pop-up and submit it.
+Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
 
-![](public/img/theme/2.png)
+![](public/img/theme/6s.png)
+![](public/img/theme/17s.png)
+<br/><br/>
 
-## Shop from the Bazar
-The user gets some fixed number of coins for each food packet sent as the reward.
-These coins can be redeemed through the "Bazar"
 
-![](public/img/theme/5.jpeg)
+## Shop from the 'BAZAR'
+The user/volunteer gets some fixed number of coins as the reward for each food
+packet sent.<br/>
+These coins can be redeemed through the online "Bazar" in form of coupons
+or products.<br/>
+<br/>
+
+![](public/img/theme/2s.png)
+<br/>
+
 
 # ADMIN
-## Transport and Redeem Management
-The admin can manage all the transport and product details through this page i.e.
-All the transport which are currently available for pickup and the stock of the 
-products in bazar.
+## Register yourself as admin
 
-![](public/img/theme/6.png)
+![](public/img/theme/10s.png)
+<br/><br/>
 
-## User Profiles
-Through this page,the admin managing the website can view the user profile and can
-check whether the order is picked up, delievered or not.
+## Managing the Parcels
+<br/>
+The admin has the complete database of the users.
+On clicking the User-ID , the admin can view the user profile.
+<br/>
+For example,<br/>
+The red box shows the user-id and the current status which is 
+"Pending".Click on "Initiate" button.<br/>
 
-![](public/img/theme/4.png)
+
+![](public/img/theme/13s.png)
+
+<br/><br/>
+
+Now select the Transport provider.<br/>
+Click on 'Initiate'.The pick-up has been initiated now.
+
+![](public/img/theme/13.5s.png)
+
+<br/><br/>
+
+Now there is button asking 'Picked up?'
+Confirm and proceed.
+
+![](public/img/theme/14s.png)
+
+<br/><br/>
+
+Check your updated status.
+
+![](public/img/theme/15s.png)
+
+<br/><br/>
+
+![](public/img/theme/16s.png)
+
+## Adding and Removing Transport Provider and Stock of Products
+The admin has the authority to add and remove the transport provider
+and update the product stock in the BAZAR.
+
+![](public/img/theme/5s.png)
+
+Here is the procedure:
+
+![](public/img/theme/11s.png)
+![](public/img/theme/12s.png)
 =======
 
 
