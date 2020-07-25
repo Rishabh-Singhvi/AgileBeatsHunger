@@ -69,7 +69,8 @@ and can initiate the transport for pick-up.
 ## Shop from the 'BAZAR'
 The user/volunteer gets some fixed number of coins as the reward for each food
 packet sent.<br/>
-These coins can be redeemed through the online "Bazar"<br/>
+These coins can be redeemed through the online "Bazar" in form of coupons
+or products.<br/>
 <br/>
 ![](public/img/theme/2s.png)
 <br/>
@@ -81,7 +82,13 @@ These coins can be redeemed through the online "Bazar"<br/>
 <br/><br/>
 
 ## Managing the Parcels
-
+<br/>
+The admin has the complete database of the users.
+On clicking the User-ID , the admin can view the user profile.
+<br/>
+For example,<br/>
+The red box shows the user-id and the current status which is 
+"Pending".Click on "Initiate" button.<br/>
 ![](public/img/theme/13s.png)
 <br/><br/>
 ![](public/img/theme/13.5s.png)
@@ -94,8 +101,8 @@ These coins can be redeemed through the online "Bazar"<br/>
 
 ## Adding and Removing Transport Provider and Stock of Products
 ![](public/img/theme/5s.png)
-
-
+![](public/img/theme/11s.png)
+![](public/img/theme/12s.png)
 =======
 
 
