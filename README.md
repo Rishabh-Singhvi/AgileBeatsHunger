@@ -40,11 +40,13 @@ We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
 # GET STARTED:
 
-![](public/img/theme/1.png)
+![](public/img/theme/1s.png)
 Let's get started 
 Click on the 'Get Started' Button.
 Register yourself as 'Admin' or 'User'.
 Fill the details like Email Id and password while signing up and proceed.
+Depending upon the field 'USER' or 'ADMIN' you will be directed to different
+pages.
 
 # USER/VOLUNTEER
 ## Placing the Booking for the Food Parcel
