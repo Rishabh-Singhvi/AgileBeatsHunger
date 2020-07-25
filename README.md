@@ -93,22 +93,41 @@ For example,<br/>
 The red box shows the user-id and the current status which is 
 "Pending".Click on "Initiate" button.<br/>
 
+
 ![](public/img/theme/13s.png)
+
 <br/><br/>
+
+Now select the Transport provider.<br/>
+Click on 'Initiate'.The pick-up has been initiated now.
 
 ![](public/img/theme/13.5s.png)
+
 <br/><br/>
+
+Now there is button asking 'Picked up?'
+Confirm and proceed.
 
 ![](public/img/theme/14s.png)
+
 <br/><br/>
 
+Check your updated status.
+
 ![](public/img/theme/15s.png)
+
 <br/><br/>
 
 ![](public/img/theme/16s.png)
 
 ## Adding and Removing Transport Provider and Stock of Products
+The admin has the authority to add and remove the transport provider
+and update the product stock in the BAZAR.
+
 ![](public/img/theme/5s.png)
+
+Here is the procedure:
+
 ![](public/img/theme/11s.png)
 ![](public/img/theme/12s.png)
 =======
