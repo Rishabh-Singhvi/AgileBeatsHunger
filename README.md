@@ -9,13 +9,12 @@
 # Documentation:
 
 
-## THEME:ERADICATE HUNGER
-## TEAM NAME: AGILE
-## TEAM MEMBERS:
-RISHABH SINGHVI AND SHUBHAM JAIN
+### THEME : ERADICATE HUNGER
+### TEAM NAME : AGILE
+### TEAM MEMBERS : RISHABH SINGHVI AND SHUBHAM JAIN
 
 
-# IDEA
+# IDEA/OBJECTIVE
 President Jimmy Carter once said that "We know that a peaceful world cannot exist one-third 
 rich and two-thirds hungry.If we want to eliminate hunger,everybody has to be involved.
 Though we are in the 21st century, we are still facing global issues like hunger and malnutrition.
@@ -36,32 +35,63 @@ Tech we will be using
 We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
 
+# USE-CASE DIAGRAM
+![](public/img/theme/userqq5.png)
+
 # GET STARTED:
 
-![](public/img/theme/1.png)
-Let's get started 
-Click on the 'Get Started' Button.
-Register yourself as 'Admin' or 'User'.
-Fill the details like Email Id and password while signing up and proceed.
+![](public/img/theme/1s.png)
+**Let's get started** <br/>
+Click on the 'Get Started' Button. <br/>
+Register yourself as 'Admin' or 'User'. <br/>
+Fill the details like Email Id and password while signing up and proceed. <br/>
+Depending upon the field 'USER' or 'ADMIN' you will be directed to different
+pages. <br/>
 
-# USER/VOLUNTEER
-## Placing the Booking for the Food Parcel
-The user or the volunteer has to fill all the details regarding the parcel.
-Once user clicks 'Pick the parcel' button, a pop-up opens so that all the details
-can be verified.
-Since the Parcel is booked, the Admin gets all the information about the parcel
+# PROCEDURE
+## USER/VOLUNTEER/ORGANIZATION
+## Register yourself as user
+![](public/img/theme/7s.png)
+<br/><br/>
+## Booking the Food Parcel
+The user or the volunteer has to fill all the details regarding the food parcel
+packed.<br/>
+Now the user clicks 'Pick the parcel' button, a pop-up opens so that all the details
+can be verified.<br/>
+Now confirm your details shown in the pop-up and submit it.
+Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
+![](public/img/theme/6s.png)
+<br/><br/>
 
-![](public/img/theme/2.png)
 
-## Shop from the Bazar
-The user gets some fixed number of coins for each food packet sent as the reward.
-These coins can be redeemed through the "Bazar"
+## Shop from the 'BAZAR'
+The user/volunteer gets some fixed number of coins as the reward for each food
+packet sent.<br/>
+These coins can be redeemed through the online "Bazar"<br/>
+<br/>
+![](public/img/theme/2s.png)
+<br/>
 
-![](public/img/theme/5.jpeg)
 
 # ADMIN
-## Transport and Redeem Management
+## Register yourself as admin
+![](public/img/theme/10s.png)
+<br/><br/>
+
+## Managing the Parcels
+
+![](public/img/theme/13s.png)
+<br/><br/>
+![](public/img/theme/13.5s.png)
+<br/><br/>
+![](public/img/theme/14s.png)
+<br/><br/>
+![](public/img/theme/15s.png)
+<br/><br/>
+
+
+
 The admin can manage all the transport and product details through this page i.e.
 All the transport which are currently available for pickup and the stock of the 
 products in bazar.
