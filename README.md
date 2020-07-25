@@ -9,13 +9,12 @@
 # Documentation:
 
 
-## THEME:ERADICATE HUNGER
-## TEAM NAME: AGILE
-## TEAM MEMBERS:
-RISHABH SINGHVI AND SHUBHAM JAIN
+### THEME : ERADICATE HUNGER
+### TEAM NAME : AGILE
+### TEAM MEMBERS : RISHABH SINGHVI AND SHUBHAM JAIN
 
 
-# IDEA
+# IDEA/OBJECTIVE
 President Jimmy Carter once said that "We know that a peaceful world cannot exist one-third 
 rich and two-thirds hungry.If we want to eliminate hunger,everybody has to be involved.
 Though we are in the 21st century, we are still facing global issues like hunger and malnutrition.
@@ -35,6 +34,9 @@ ready to donate and eradicate hunger with their helping hands.
 Tech we will be using
 We will be making the web app with HTML, CSS, JS, VUEJS and firebase.
 
+
+# USE-CASE DIAGRAM
+![](public/img/theme/userqq5.png)
 
 # GET STARTED:
 
