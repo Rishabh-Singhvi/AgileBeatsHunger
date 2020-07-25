@@ -13,7 +13,7 @@
                 <base-dropdown class="nav-link pr-0">
                     <div class="media align-items-center" slot="title">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="img/theme/foodicon.png">
+                  <img alt="Image placeholder" style="cursor:pointer" src="img/theme/foodicon.png">
                 </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold " style="color:black">Beat the Hunger</span>

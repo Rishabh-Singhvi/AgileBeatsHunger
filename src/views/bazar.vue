@@ -159,7 +159,7 @@ let db = firebase.firestore();
                        if(prid.coins<=this.coins){
                       currentCoins=this.coins-prid.coins
                       db.doc('Coins/'+uid).update({coins:currentCoins})
-                      this.getcurCoins();
+                      this.getcurCoins()
                     //   this.$notify("Item Purchased")
                     //    this.modals.modal1=false;
                       //this.getCoins();
@@ -176,10 +176,10 @@ let db = firebase.firestore();
              if(snap.data()){
                  this.coins=snap.data().coins
              }
-         }).then(()=>{
-             this.$notify("Item Purchased")
-                this.modals.modal1=false;
          })
+          //window.location.reload()
+           this.$notify("Item Purchased")
+          this.modals.modal1=false;
       }
     },
     beforeMount(){
