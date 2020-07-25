@@ -48,7 +48,11 @@ Fill the details like Email Id and password while signing up and proceed. <br/>
 Depending upon the field 'USER' or 'ADMIN' you will be directed to different
 pages. <br/>
 
-# USER/VOLUNTEER/ORGANIZATION
+# PROCEDURE
+## USER/VOLUNTEER/ORGANIZATION
+## Register yourself as user
+![](public/img/theme/7s.png)
+<br/><br/>
 ## Booking the Food Parcel
 The user or the volunteer has to fill all the details regarding the food parcel
 packed.<br/>
@@ -59,16 +63,35 @@ Once the Parcel is booked, the Admin gets all the information about the parcel
 and can initiate the transport for pick-up.
 ![](public/img/theme/6s.png)
 <br/><br/>
-![](public/img/theme/8s.png)
 
-## Shop from the Bazar
-The user gets some fixed number of coins for each food packet sent as the reward.
-These coins can be redeemed through the "Bazar"
 
-![](public/img/theme/5.jpeg)
+## Shop from the 'BAZAR'
+The user/volunteer gets some fixed number of coins as the reward for each food
+packet sent.<br/>
+These coins can be redeemed through the online "Bazar"<br/>
+<br/>
+![](public/img/theme/2s.png)
+<br/>
+
 
 # ADMIN
-## Transport and Redeem Management
+## Register yourself as admin
+![](public/img/theme/10s.png)
+<br/><br/>
+
+## Managing the Parcels
+
+![](public/img/theme/13s.png)
+<br/><br/>
+![](public/img/theme/13.5s.png)
+<br/><br/>
+![](public/img/theme/14s.png)
+<br/><br/>
+![](public/img/theme/15s.png)
+<br/><br/>
+
+
+
 The admin can manage all the transport and product details through this page i.e.
 All the transport which are currently available for pickup and the stock of the 
 products in bazar.
