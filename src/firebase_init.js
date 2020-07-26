@@ -5,15 +5,15 @@ import 'firebase/storage';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD2URXTu-acDSsRGBFpEo8au5VoisKegAI",
-    authDomain: "agilebeathunger.firebaseapp.com",
-    databaseURL: "https://agilebeathunger.firebaseio.com",
-    projectId: "agilebeathunger",
-    storageBucket: "agilebeathunger.appspot.com",
-    messagingSenderId: "733460063921",
-    appId: "1:733460063921:web:56beadb9ef4894dfa7a490",
-    measurementId: "G-EV8RQT4BJW"
-  };
+  apiKey: "AIzaSyBgjV2ZyEN75pb0VqHMp18--BvCsjayL14",
+  authDomain: "agile-25afd.firebaseapp.com",
+  databaseURL: "https://agile-25afd.firebaseio.com",
+  projectId: "agile-25afd",
+  storageBucket: "agile-25afd.appspot.com",
+  messagingSenderId: "121300202546",
+  appId: "1:121300202546:web:774ce9f4e0ff794927782b",
+  measurementId: "G-T867Z67Z0B"
+};
   
   firebase.initializeApp(firebaseConfig);
   

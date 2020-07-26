@@ -48,19 +48,19 @@
                         <div class="row" >
                             <div class="col-xl-4 order-xl-1" v-for="(pro,index) in allProduct" :key="index">
                             <card shadow type="secondary" >
-                              <img :src="allProduct[index].picture" style="height:200px;width:300px;border-radius:15px">
-                              <h2 style="margin-top:5px">{{allProduct[index].proName}}</h2>
+                              <img :src="allProduct[index].proData.picture" style="height:200px;width:300px;border-radius:15px">
+                              <h2 style="margin-top:5px">{{allProduct[index].proData.proName}}</h2>
                                <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button btn-small block type="" v-if="!allProduct[index].added" style="background-color:#43464b;color:white;margin-left:20px;width:150px"  @click="addToCart(allProduct[index])">
+                                            <base-button btn-small block type="" v-if="!allProduct[index].proData.added" style="background-color:#43464b;color:white;margin-left:20px;width:150px"  @click="addToCart(allProduct[index])">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true" ></i> Buy
-                                            </base-button>
-                                            <base-button btn-small block type="" v-if="allProduct[index].added" disabled style="background-color:#43464b;color:white;margin-left:20px;width:150px"  @click="addToCart(allProduct[index])">
+                                            </base-button> 
+                                            <base-button btn-small block type="" v-else disabled style="background-color:#43464b;color:white;margin-left:20px;width:150px">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true" ></i> Purchased
-                                            </base-button>                                      
+                                            </base-button>                                
                                         </div>
                                         <i class="fas fa-coins fa-2x"  style="margin-left:100px;margin-top:20px"></i>
-                                        <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].coins}}</h2>
+                                        <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].proData.coins}}</h2>
                                 </div>
                            </card>
                             </div>
@@ -76,7 +76,7 @@
                             </div>
 
                             <template slot="footer">
-                                <base-button type="success"  @click="buy(yourId)">Buy</base-button>
+                                <base-button type="success"  @click="buy(currentProduct)">Buy</base-button>
                                 <base-button type="white" @click="modals.modal1 = false">Close</base-button>
                             </template>
                     </modal>
@@ -127,13 +127,13 @@ let db = firebase.firestore();
     data(){
         return{
            yourId:'',
+           currentProduct:[],
            myProduct:[],
            coins:0,
            allProduct:[],
             modals:{
            modal2:false,
-           modal1:false,
-           user:{}
+           modal1:false
         }
         }
     } ,
@@ -143,9 +143,10 @@ let db = firebase.firestore();
            db.doc("MyProducts/"+uid).onSnapshot(product=>{
                product.data().MyProducts.forEach(prid=>{
                    if(prid.id==pro.id){
-                      if(prid.coins<=this.coins){
+                      if(prid.proData.coins<=this.coins){
                           this.modals.modal1=true
-                          this.yourId=prid.id     
+                          this.currentProduct=prid
+                          console.log(this.currentProduct)    
                       }
                       else{
                           this.modals.modal2=true
@@ -154,21 +155,27 @@ let db = firebase.firestore();
                })
            })
       },
-      buy(id){
+      buy(fin){
+          console.log("he")
+          console.log(fin);
           let currentCoins=0
           let uid=localStorage.getItem('uid')
            db.doc("MyProducts/"+uid).get().then(product=>{
                product.data().MyProducts.forEach(prid=>{
-                   if(prid.id==id){
-                       if(prid.coins<=this.coins){
-                      currentCoins=this.coins-prid.coins
+                   console.log(prid.id)
+
+                   if(prid.id==fin.id){
+                       if(prid.proData.coins<=this.coins){
+                           console.log("yes")
+                      currentCoins=this.coins-prid.proData.coins
+                      console.log(fin.index)
+                      this.allProduct[(fin.index)-1].proData.added=true
+                      console.log(this.allProduct)
                       db.doc('Coins/'+uid).update({coins:currentCoins})
                       this.getcurCoins()
-                      this.user.registeredEvents.push(id)
-                      db.doc("users/"+uid).set(this.user)
                     //   this.$notify("Item Purchased")
                     //    this.modals.modal1=false;
-                      this.getProduct();
+                      //this.getCoins();
                        }
                    }
                })
@@ -183,50 +190,37 @@ let db = firebase.firestore();
                  this.coins=snap.data().coins
              }
          })
+         db.doc("MyProducts/"+uid).set({
+             MyProducts:this.allProduct
+         })
           //window.location.reload()
-           this.$notify("Item Purchased")
+          this.$notify("Item Purchased")
           this.modals.modal1=false;
-      },
-      getProduct(){
-           db.collection("AllProducts").onSnapshot(response=>{
-             if(this.allProduct.length!==0) this.allProduct=[]
-             response.forEach(d=>{
-                      if(this.user.registeredEvents.includes(d.id)){
-                          console.log("hello")
-                          db.collection("AllProducts").doc(d.id).update({
-                            added:true,
-                            id:d.id,
-                         })
-                      }
-                      else{
-                           db.collection("AllProducts").doc(d.id).update({
-                            added:false,
-                            id:d.id,
-                        })
-                      }
-                       this.allProduct.push(d.data())
-                  })
-                   console.log(this.allProduct)
-                   // let uid=localStorage.getItem('uid')
-                  db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
-             })
-         
       }
     },
     beforeMount(){
         let uid=localStorage.getItem('uid')
+        
          db.doc('Coins/'+uid).get().then(snap=>{
              if(snap.data()){
                  this.coins=snap.data().coins
              }
          })
-          db.doc("users/"+uid).get().then(g=>{
-             this.user=g.data()
-             console.log(this.user)
-         }).then(()=>{
-            this.getProduct()
+         db.collection("AllProducts").onSnapshot(response=>{
+             if(this.allProduct.length!==0) this.allProduct=[]
+             let index=1
+             response.forEach(doc=>{
+                   let blankPro={
+                       index:index,
+                       id:doc.id,
+                       proData:doc.data()
+                   } 
+                   index=index+1
+                   this.allProduct.push(blankPro)
+                   console.log(this.allProduct)
+                   db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
+             })
          })
-         
             
          
     }  

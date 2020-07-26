@@ -172,7 +172,8 @@ export default {
                 proName:'',
                 proProvider:'',
                 coins:0,
-                stock:0
+                stock:0,
+                added:false
             },
             modals:{
            modal2:false,
