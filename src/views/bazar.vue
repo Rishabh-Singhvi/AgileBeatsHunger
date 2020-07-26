@@ -63,8 +63,11 @@
                                         <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].proData.coins}}</h2>
                                 </div>
                            </card>
+                           <br>
                             </div>
+                            <br>
                         </div>
+                        <br>
                     </card>
                      <modal :show.sync="modals.modal1"
                             gradient="white"
@@ -145,8 +148,7 @@ let db = firebase.firestore();
                    if(prid.id==pro.id){
                       if(prid.proData.coins<=this.coins){
                           this.modals.modal1=true
-                          this.currentProduct=prid
-                          console.log(this.currentProduct)    
+                          this.currentProduct=prid  
                       }
                       else{
                           this.modals.modal2=true
@@ -156,21 +158,16 @@ let db = firebase.firestore();
            })
       },
       buy(fin){
-          console.log("he")
-          console.log(fin);
           let currentCoins=0
           let uid=localStorage.getItem('uid')
            db.doc("MyProducts/"+uid).get().then(product=>{
                product.data().MyProducts.forEach(prid=>{
-                   console.log(prid.id)
-
                    if(prid.id==fin.id){
                        if(prid.proData.coins<=this.coins){
-                           console.log("yes")
                       currentCoins=this.coins-prid.proData.coins
-                      console.log(fin.index)
-                      this.allProduct[(fin.index)-1].proData.added=true
-                      console.log(this.allProduct)
+                    //   console.log(fin.index)
+                    //   this.allProduct[(fin.index)-1].proData.added=true
+                    //   console.log(this.allProduct)
                       db.doc('Coins/'+uid).update({coins:currentCoins})
                       this.getcurCoins()
                     //   this.$notify("Item Purchased")
@@ -190,10 +187,11 @@ let db = firebase.firestore();
                  this.coins=snap.data().coins
              }
          })
-         db.doc("MyProducts/"+uid).set({
-             MyProducts:this.allProduct
-         })
+        //  db.doc("MyProducts/"+uid).set({
+        //      MyProducts:this.allProduct
+        //  })
           //window.location.reload()
+        //   this.modals.modal1=false;
           this.$notify("Item Purchased")
           this.modals.modal1=false;
       }
@@ -216,6 +214,15 @@ let db = firebase.firestore();
                        proData:doc.data()
                    } 
                    index=index+1
+                //    db.doc("MyProducts/"+uid).get().then(p=>{
+                //        p.data().MyProducts.forEach(prod=>{
+                //            if(prod.id==doc.id){
+                //                console.log("hahahah")
+                               
+                //               blankPro.proData.added=prod.proData.added
+                //            }
+                //        })
+                //    })
                    this.allProduct.push(blankPro)
                    console.log(this.allProduct)
                    db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
