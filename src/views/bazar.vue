@@ -52,9 +52,12 @@
                               <h2 style="margin-top:5px">{{allProduct[index].proName}}</h2>
                                <div class="row">
                                         <div style="max-width:100px;margin-top:15px">                                
-                                            <base-button btn-small block type="" v-if="!allProduct[index].added" style="background-color:#43464b;color:white;margin-left:20px"  @click="addToCart(allProduct[index])">
+                                            <base-button btn-small block type="" v-if="!allProduct[index].added" style="background-color:#43464b;color:white;margin-left:20px;width:150px"  @click="addToCart(allProduct[index])">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true" ></i> Buy
-                                            </base-button>                                
+                                            </base-button>
+                                            <base-button btn-small block type="" v-if="allProduct[index].added" disabled style="background-color:#43464b;color:white;margin-left:20px;width:150px"  @click="addToCart(allProduct[index])">
+                                                <i class="fa fa-shopping-cart" aria-hidden="true" ></i> Purchased
+                                            </base-button>                                      
                                         </div>
                                         <i class="fas fa-coins fa-2x"  style="margin-left:100px;margin-top:20px"></i>
                                         <h2 style="margin-left:15px;margin-top:20px">{{allProduct[index].coins}}</h2>
@@ -129,7 +132,8 @@ let db = firebase.firestore();
            allProduct:[],
             modals:{
            modal2:false,
-           modal1:false
+           modal1:false,
+           user:{}
         }
         }
     } ,
@@ -160,9 +164,11 @@ let db = firebase.firestore();
                       currentCoins=this.coins-prid.coins
                       db.doc('Coins/'+uid).update({coins:currentCoins})
                       this.getcurCoins()
+                      this.user.registeredEvents.push(id)
+                      db.doc("users/"+uid).set(this.user)
                     //   this.$notify("Item Purchased")
                     //    this.modals.modal1=false;
-                      //this.getCoins();
+                      this.getProduct();
                        }
                    }
                })
@@ -180,28 +186,47 @@ let db = firebase.firestore();
           //window.location.reload()
            this.$notify("Item Purchased")
           this.modals.modal1=false;
+      },
+      getProduct(){
+           db.collection("AllProducts").onSnapshot(response=>{
+             if(this.allProduct.length!==0) this.allProduct=[]
+             response.forEach(d=>{
+                      if(this.user.registeredEvents.includes(d.id)){
+                          console.log("hello")
+                          db.collection("AllProducts").doc(d.id).update({
+                            added:true,
+                            id:d.id,
+                         })
+                      }
+                      else{
+                           db.collection("AllProducts").doc(d.id).update({
+                            added:false,
+                            id:d.id,
+                        })
+                      }
+                       this.allProduct.push(d.data())
+                  })
+                   console.log(this.allProduct)
+                   // let uid=localStorage.getItem('uid')
+                  db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
+             })
+         
       }
     },
     beforeMount(){
         let uid=localStorage.getItem('uid')
-        
          db.doc('Coins/'+uid).get().then(snap=>{
              if(snap.data()){
                  this.coins=snap.data().coins
              }
          })
-         db.collection("AllProducts").onSnapshot(response=>{
-             if(this.allProduct.length!==0) this.allProduct=[]
-             response.forEach(doc=>{
-                  db.collection("AllProducts").doc(doc.id).update({
-                    added:false,
-                    id:doc.id,
-                })
-                   this.allProduct.push(doc.data())
-                   console.log(this.allProduct)
-                   db.doc("MyProducts/"+uid).set({MyProducts:this.allProduct})
-             })
+          db.doc("users/"+uid).get().then(g=>{
+             this.user=g.data()
+             console.log(this.user)
+         }).then(()=>{
+            this.getProduct()
          })
+         
             
          
     }  
