@@ -62,6 +62,7 @@ const auth = firebase.auth();
           auth.signOut().then(()=>{
             console.log("Logged Out")
             this.$router.push('/login')
+            localStorage.clear();
           })
       },
     }
